@@ -2,7 +2,6 @@ package ar.edu.untref.aydoo;
 
 import org.junit.Test;
 
-import java.io.File;
 import java.io.IOException;
 
 /**
@@ -31,6 +30,12 @@ public class LectorDeMarkdownTest {
     @Test (expected = NombreDeArchivoIncorrectoException.class)
     public void nombreDeArchivoContieneBarraDesplazada() throws IOException {
         String nombreDeArchivo = "archivo/barra.md";
+        LectorDeMarkdown lector = new LectorDeMarkdown(nombreDeArchivo);
+    }
+
+    @Test (expected = NombreDeArchivoIncorrectoException.class)
+    public void nombreDeArchivoContieneAcento() throws IOException {
+        String nombreDeArchivo = "Camión.md";
         LectorDeMarkdown lector = new LectorDeMarkdown(nombreDeArchivo);
     }
 }

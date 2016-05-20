@@ -1,6 +1,7 @@
 package ar.edu.untref.aydoo;
 
 import java.io.File;
+import java.util.regex.Pattern;
 
 /**
  * Created by Velonter on 5/20/2016.
@@ -24,6 +25,10 @@ public class LectorDeMarkdown {
             throw new NombreDeArchivoIncorrectoException();
         }
         if (nombreDeArchivo.contains("/")){
+            throw new NombreDeArchivoIncorrectoException();
+        }
+        // Ver si se puede cambiar por una mejor implementacion
+        if (Pattern.matches(".*[áàäéèëíìïóòöúùuñÁÀÄÉÈËÍÌÏÓÒÖÚÙÜ].*", nombreDeArchivo)){
             throw new NombreDeArchivoIncorrectoException();
         }
 
