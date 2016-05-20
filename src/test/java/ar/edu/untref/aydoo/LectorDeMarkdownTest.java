@@ -24,7 +24,7 @@ public class LectorDeMarkdownTest {
 
     @Test (expected = NombreDeArchivoIncorrectoException.class)
     public void nombreDeArchivoContieneEspaciosEnBlanco() throws IOException {
-        String nombreDeArchivo = "archivo con espacio.md";
+        String nombreDeArchivo = "mi presentacion";
         LectorDeMarkdown lector = new LectorDeMarkdown(nombreDeArchivo);
 
     }

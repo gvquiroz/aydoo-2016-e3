@@ -16,7 +16,6 @@ public class LectorDeMarkdown {
 
     public void chequeoDeNombreDeArchivoDeEntrada(String nombreDeArchivo) {
 
-
         if (nombreDeArchivo.toLowerCase().contains("ñ")){
             throw new NombreDeArchivoIncorrectoException();
         }
