@@ -7,7 +7,7 @@ import org.junit.Test;
 public class TituloTest {
 
     @Test
-    public void muestraElContenidoDelElemento(){
+    public void muestraElContenidoDelTitulo(){
 
         Titulo unTitulo = new Titulo("#Buenos Dias");
         String contenido = unTitulo.getContenido();
@@ -16,7 +16,7 @@ public class TituloTest {
     }
 
     @Test
-    public void muestraElNuevoContenidoDelElemento(){
+    public void muestraElNuevoContenidoDelTitulo(){
 
         Titulo unTitulo = new Titulo("#Buenos Dias");
         String nuevoContenido = unTitulo.getNuevoContenido();

@@ -13,7 +13,7 @@ public class Titulo extends Elemento {
         //<h1>un titulo</h1>
 
         String titulo = this.getContenido();
-        titulo = titulo.substring(1);
+        titulo = titulo.substring(2);
         String nuevoTitulo;
         nuevoTitulo = "<h1>"+titulo+"</h1>";
 
