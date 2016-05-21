@@ -7,21 +7,21 @@ import org.junit.Test;
 public class TituloTest {
 
     @Test
-    public void muestraElContenidoDelTitulo(){
+    public void muestraTituloEntrante(){
 
         Titulo unTitulo = new Titulo("# Buenos Dias");
-        String contenido = unTitulo.getEntrada();
+        String tituloEntrada = unTitulo.getEntrada();
 
-        Assert.assertEquals("# Buenos Dias", contenido);
+        Assert.assertEquals("# Buenos Dias", tituloEntrada);
     }
 
     @Test
-    public void muestraElNuevoContenidoDelTitulo(){
+    public void muestralTituloTransformadoSalida(){
 
         Titulo unTitulo = new Titulo("# Buenos Dias");
-        String nuevoContenido = unTitulo.getSalida();
+        String tituloSalida = unTitulo.getSalida();
 
-        Assert.assertEquals("<h1>Buenos Dias</h1>", nuevoContenido);
+        Assert.assertEquals("<h1>Buenos Dias</h1>", tituloSalida);
     }
 
 }

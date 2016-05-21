@@ -6,7 +6,7 @@ import org.junit.Test;
 public class SubtituloTest {
 
     @Test
-    public void muestraElContenidoDelSubtitulo(){
+    public void muestraSubtituloEntrante(){
 
         SubTitulo unSubTitulo = new SubTitulo("## Hay 2 imputados por el crimen");
         String subTituloEntrada = unSubTitulo.getEntrada();
@@ -15,7 +15,7 @@ public class SubtituloTest {
     }
 
     @Test
-    public void muestraElNuevoContenidoDelSubtitulo(){
+    public void muestraSubtituloTransformadoSalida(){
 
         SubTitulo unSubTitulo = new SubTitulo("## Hay 2 imputados por el crimen");
         String subtituloSalida = unSubTitulo.getSalida();
