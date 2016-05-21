@@ -20,7 +20,7 @@ public class ImagenTest {
         Imagen unaImagen = new Imagen("i:fotoImputado.png");
         String imagenSalida = unaImagen.getSalida();
 
-        Assert.assertEquals("<imj src= fotoImputado.png />", imagenSalida);
+        Assert.assertEquals("<img src= fotoImputado.png />", imagenSalida);
     }
 
 }
