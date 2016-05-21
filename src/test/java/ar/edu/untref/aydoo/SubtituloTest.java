@@ -9,18 +9,18 @@ public class SubtituloTest {
     public void muestraElContenidoDelSubtitulo(){
 
         SubTitulo unSubTitulo = new SubTitulo("## Hay 2 imputados por el crimen");
-        String contenido = unSubTitulo.getContenido();
+        String subTituloEntrada = unSubTitulo.getEntrada();
 
-        Assert.assertEquals("## Hay 2 imputados por el crimen", contenido);
+        Assert.assertEquals("## Hay 2 imputados por el crimen", subTituloEntrada);
     }
 
     @Test
     public void muestraElNuevoContenidoDelSubtitulo(){
 
         SubTitulo unSubTitulo = new SubTitulo("## Hay 2 imputados por el crimen");
-        String nuevoContenido = unSubTitulo.getNuevoContenido();
+        String subtituloSalida = unSubTitulo.getSalida();
 
-        Assert.assertEquals("<h2>Hay 2 imputados por el crimen</h2>", nuevoContenido);
+        Assert.assertEquals("<h2>Hay 2 imputados por el crimen</h2>", subtituloSalida);
     }
 
 }

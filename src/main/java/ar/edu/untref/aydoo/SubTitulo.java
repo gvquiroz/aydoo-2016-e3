@@ -4,20 +4,20 @@ public class SubTitulo extends Elemento{
 
     public SubTitulo(String subTitulo) {
 
-        this.setContenido(subTitulo);
+        this.setEntrada(subTitulo);
 
     }
 
-    public String getNuevoContenido(){
+    public String getSalida(){
 
         //<h2>un subtitulo</h2>
 
-        String subTitulo = this.getContenido();
+        String subTitulo = this.getEntrada();
         subTitulo = subTitulo.substring(3);
-        String nuevoSubTitulo;
-        nuevoSubTitulo = "<h2>"+subTitulo+"</h2>";
+        String salida;
+        salida = "<h2>"+subTitulo+"</h2>";
 
-        return nuevoSubTitulo;
+        return salida;
 
     }
 

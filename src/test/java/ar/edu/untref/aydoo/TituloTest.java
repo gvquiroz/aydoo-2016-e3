@@ -10,7 +10,7 @@ public class TituloTest {
     public void muestraElContenidoDelTitulo(){
 
         Titulo unTitulo = new Titulo("# Buenos Dias");
-        String contenido = unTitulo.getContenido();
+        String contenido = unTitulo.getEntrada();
 
         Assert.assertEquals("# Buenos Dias", contenido);
     }
@@ -19,7 +19,7 @@ public class TituloTest {
     public void muestraElNuevoContenidoDelTitulo(){
 
         Titulo unTitulo = new Titulo("# Buenos Dias");
-        String nuevoContenido = unTitulo.getNuevoContenido();
+        String nuevoContenido = unTitulo.getSalida();
 
         Assert.assertEquals("<h1>Buenos Dias</h1>", nuevoContenido);
     }

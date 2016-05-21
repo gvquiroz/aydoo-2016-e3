@@ -4,20 +4,20 @@ public class Titulo extends Elemento {
 
     public Titulo(String titulo) {
 
-        this.setContenido(titulo);
+        this.setEntrada(titulo);
 
     }
 
-    public String getNuevoContenido(){
+    public String getSalida(){
 
         //<h1>un titulo</h1>
 
-        String titulo = this.getContenido();
+        String titulo = this.getEntrada();
         titulo = titulo.substring(2);
-        String nuevoTitulo;
-        nuevoTitulo = "<h1>"+titulo+"</h1>";
+        String salida;
+        salida = "<h1>"+titulo+"</h1>";
 
-        return nuevoTitulo;
+        return salida;
 
     }
 

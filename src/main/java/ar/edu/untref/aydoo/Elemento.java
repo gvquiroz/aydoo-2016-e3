@@ -3,19 +3,19 @@ package ar.edu.untref.aydoo;
 
 public abstract class Elemento {
 
-    private String contenido;
-    private String nuevoContenido;
+    private String entrada;
+    private String salida;
 
-    public void setContenido(String contenido){
-        this.contenido = contenido;
+    public void setEntrada(String entrada){
+        this.entrada = entrada;
     }
 
-    public String getContenido(){
-        return this.contenido;
+    public String getEntrada(){
+        return this.entrada;
     }
 
-    public String getNuevoContenido(){
-        return this.nuevoContenido;
+    public String getSalida(){
+        return this.salida;
     }
 
 }
