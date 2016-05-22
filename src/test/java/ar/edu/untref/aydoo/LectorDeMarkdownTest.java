@@ -2,6 +2,7 @@ package ar.edu.untref.aydoo;
 
 import org.junit.Test;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 
 /**
@@ -42,5 +43,12 @@ public class LectorDeMarkdownTest {
     public void nombreDeArchivoContieneAcento() throws IOException {
         String nombreDeArchivo = "Camión.md";
         LectorDeMarkdown lector = new LectorDeMarkdown(nombreDeArchivo);
+    }
+    
+    @Test
+    public void leerArchivo() throws FileNotFoundException, IOException{
+    	String nombreDeArchivo = "mipresentacion1.md";
+    	LectorDeMarkdown lector = new LectorDeMarkdown(nombreDeArchivo);
+    	lector.leerArchivo(nombreDeArchivo);
     }
 }

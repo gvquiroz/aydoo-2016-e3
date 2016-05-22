@@ -1,20 +1,29 @@
 package ar.edu.untref.aydoo;
 
-public class Seccion extends Elemento{
+import java.util.LinkedList;
+import java.util.List;
+
+public class Seccion extends Elemento {
+
+	private List<Elemento> elementos;
 
 	public Seccion(String contenidoSeccion) {
 		this.setEntrada(contenidoSeccion);
+		this.elementos = new LinkedList<Elemento>();
 	}
-	
-    public String getSalida(){
 
-        String contenidoSeccion = this.getEntrada();
-        contenidoSeccion = contenidoSeccion.substring(4);
-        String salida;
-        salida = "<section>" + contenidoSeccion + "</section>";
+	public String getSalida() {
+		String resultado = "";
 
-        return salida;
+		for (Elemento elementoActual : elementos) {
+			resultado = resultado + elementoActual.getSalida();
+		}
 
-    }
+		return "<section>" + resultado + "</section>";
+	}
+
+	public void agregarElemento(Elemento unElemento) {
+		this.elementos.add(unElemento);
+	}
 
 }
