@@ -20,7 +20,7 @@ public class SeccionTest {
 		Seccion unaSeccion = new Seccion("");
 		String resultado = unaSeccion.getSalida();
 
-		Assert.assertEquals("<section></section>", resultado);
+		Assert.assertEquals("<section>\n</section>", resultado);
 	}
 
 	@Test
@@ -30,7 +30,7 @@ public class SeccionTest {
 
 		unaSeccion.agregarElemento(titulo);
 
-		Assert.assertEquals("<section><h1>UnTitulo</h1></section>", unaSeccion.getSalida());
+		Assert.assertEquals("<section>\n<h1>UnTitulo</h1>\n</section>", unaSeccion.getSalida());
 	}
 
 	@Test
@@ -40,7 +40,7 @@ public class SeccionTest {
 
 		unaSeccion.agregarElemento(subTitulo);
 
-		Assert.assertEquals("<section><h2>UnSubTitulo</h2></section>", unaSeccion.getSalida());
+		Assert.assertEquals("<section>\n<h2>UnSubTitulo</h2>\n</section>", unaSeccion.getSalida());
 	}
 	
 	@Test
@@ -52,6 +52,6 @@ public class SeccionTest {
 		unaSeccion.agregarElemento(titulo);
 		unaSeccion.agregarElemento(subTitulo);
 
-		Assert.assertEquals("<section><h1>UnTitulo</h1><h2>UnSubTitulo</h2></section>", unaSeccion.getSalida());
+		Assert.assertEquals("<section>\n<h1>UnTitulo</h1>\n<h2>UnSubTitulo</h2>\n</section>", unaSeccion.getSalida());
 	}
 }

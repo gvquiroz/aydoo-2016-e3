@@ -16,10 +16,10 @@ public class Seccion extends Elemento {
 		String resultado = "";
 
 		for (Elemento elementoActual : elementos) {
-			resultado = resultado + elementoActual.getSalida();
+			resultado =  resultado + elementoActual.getSalida() + "\n";
 		}
 
-		return "<section>" + resultado + "</section>";
+		return "<section>" + "\n" + resultado + "</section>";
 	}
 
 	public void agregarElemento(Elemento unElemento) {
