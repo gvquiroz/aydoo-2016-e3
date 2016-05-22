@@ -8,7 +8,12 @@ public class GestorDeEntrada {
     private String modo = "default";
 
     public GestorDeEntrada (String argumentos[]){
-
+        for (String datos : argumentos) {
+            if (datos.contains("--format=")) {
+                String[] descomposicionDeModo = datos.split("=");
+                this.modo = descomposicionDeModo[1];
+            }
+        }
     }
 
     public String getModo() {

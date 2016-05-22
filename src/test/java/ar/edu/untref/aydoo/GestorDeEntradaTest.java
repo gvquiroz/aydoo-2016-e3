@@ -16,4 +16,13 @@ public class GestorDeEntradaTest {
 
         Assert.assertEquals(resultado, "default");
     }
+    @Test
+    public void RecibeModoDefault(){
+        String args[] = {"--mode=default"};
+        GestorDeEntrada interfaz = new GestorDeEntrada(args);
+
+        String resultado = interfaz.getModo();
+
+        Assert.assertEquals(resultado, "default");
+    }
 }
