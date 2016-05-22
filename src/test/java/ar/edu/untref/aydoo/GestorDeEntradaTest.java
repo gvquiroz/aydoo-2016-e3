@@ -1,5 +1,6 @@
 package ar.edu.untref.aydoo;
 
+import org.junit.Assert;
 import org.junit.Test;
 
 /**
@@ -8,9 +9,11 @@ import org.junit.Test;
 public class GestorDeEntradaTest {
     @Test
     public void recibeModoDefault(){
-        String args[] = { " --mode=default" };
-
+        String args[] = {" --mode=default"};
         GestorDeEntrada interfaz = new GestorDeEntrada(args);
-        interfaz.getModo();
+
+        String resultado = interfaz.getModo();
+
+        Assert.assertEquals(resultado, "default");
     }
 }
