@@ -8,8 +8,8 @@ import org.junit.Test;
  */
 public class GestorDeEntradaTest {
     @Test
-    public void recibeModoDefault(){
-        String args[] = {" --mode=default"};
+    public void noRecibeModoPorLoQueElModoEsDefault(){
+        String args[] = {""};
         GestorDeEntrada interfaz = new GestorDeEntrada(args);
 
         String resultado = interfaz.getModo();
