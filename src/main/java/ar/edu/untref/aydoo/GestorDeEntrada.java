@@ -9,7 +9,7 @@ public class GestorDeEntrada {
 
     public GestorDeEntrada (String argumentos[]){
         for (String datos : argumentos) {
-            if (datos.contains("--format=")) {
+            if (datos.contains("--mode=")) {
                 String[] descomposicionDeModo = datos.split("=");
                 this.modo = descomposicionDeModo[1];
             }
