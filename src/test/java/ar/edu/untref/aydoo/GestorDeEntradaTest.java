@@ -14,7 +14,7 @@ public class GestorDeEntradaTest {
 
         String resultado = interfaz.getModo();
 
-        Assert.assertEquals(resultado, "default");
+        Assert.assertEquals( "default",resultado);
     }
     @Test
     public void recibeModoDefault(){
@@ -23,7 +23,7 @@ public class GestorDeEntradaTest {
 
         String resultado = interfaz.getModo();
 
-        Assert.assertEquals(resultado, "default");
+        Assert.assertEquals( "default",resultado);
     }
     @Test
     public void recibeModoNoOutput(){
@@ -32,16 +32,25 @@ public class GestorDeEntradaTest {
 
         String resultado = interfaz.getModo();
 
-        Assert.assertEquals(resultado, "no-output");
+        Assert.assertEquals("no-output",resultado);
     }
 
     @Test
     public void recibeModoNoOutputLuegoDelNombreDelArchivo(){
-        String args[] = {"mipresentacion.md --mode=no-output"};
+        String args[] = {"mipresentacion.md" , "--mode=no-output"};
         GestorDeEntrada interfaz = new GestorDeEntrada(args);
 
         String resultado = interfaz.getModo();
 
-        Assert.assertEquals(resultado, "no-output");
+        Assert.assertEquals( "no-output",resultado);
+    }
+    @Test
+    public void recibeModoNoOutputAntesDelNombreDelArchivo(){
+        String args[] = {"--mode=no-output" , "mipresentacion.md"};
+        GestorDeEntrada interfaz = new GestorDeEntrada(args);
+
+        String resultado = interfaz.getModo();
+
+        Assert.assertEquals("no-output",resultado);
     }
 }
