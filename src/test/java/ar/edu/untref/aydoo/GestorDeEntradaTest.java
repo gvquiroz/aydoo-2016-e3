@@ -62,4 +62,22 @@ public class GestorDeEntradaTest {
 
         Assert.assertEquals("presentacion1",resultado);
     }
+    @Test
+    public void recibeSoloNombreDeArchivo(){
+        String args[] = {"mipresentacion.md"};
+        GestorDeEntrada interfaz = new GestorDeEntrada(args);
+
+        String resultado = interfaz.getNombreDeArchivo();
+
+        Assert.assertEquals("mipresentacion.md",resultado);
+    }
+    @Test
+    public void recibeModeYNombreDeArchivoYPreguntoNombreDeArchivo(){
+        String args[] = {"mipresentacion.md" , "--mode=no-output"};
+        GestorDeEntrada interfaz = new GestorDeEntrada(args);
+
+        String resultado = interfaz.getNombreDeArchivo();
+
+        Assert.assertEquals("mipresentacion.md",resultado);
+    }
 }

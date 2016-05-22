@@ -5,6 +5,7 @@ package ar.edu.untref.aydoo;
  */
 public class GestorDeEntrada {
 
+    private String nombreDeArchivo;
     private String nombreDeCarpetaDeSalida = "";
     // Por si no ingresa modo inicializa en default
     private String modo = "default";
@@ -15,10 +16,11 @@ public class GestorDeEntrada {
             if (datos.contains("--mode=")) {
                 String[] descomposicionDeModo = datos.split("=");
                 this.modo = descomposicionDeModo[1];
-            }
-            if (datos.contains("--output=")){
+            } else if (datos.contains("--output=")){
                 String[] descomposicionDelOutput = datos.split("=");
                 this.nombreDeCarpetaDeSalida = descomposicionDelOutput[1];
+            } else {
+                this.nombreDeArchivo = datos;
             }
         }
     }
@@ -28,5 +30,8 @@ public class GestorDeEntrada {
     }
     public String getNombreDeCarpetaDeSalida(){
         return this.nombreDeCarpetaDeSalida;
+    }
+    public String getNombreDeArchivo(){
+        return this.nombreDeArchivo;
     }
 }
