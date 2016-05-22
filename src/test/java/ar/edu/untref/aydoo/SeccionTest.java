@@ -24,6 +24,16 @@ public class SeccionTest {
 	}
 
 	@Test
+	public void seccionConTextoPlano() {
+		Seccion unaSeccion = new Seccion("");
+		Texto texto = new Texto("texto libre");
+
+		unaSeccion.agregarElemento(texto);
+
+		Assert.assertEquals("<section>\ntexto libre\n</section>", unaSeccion.getSalida());
+	}
+	
+	@Test
 	public void seccionConTitulo() {
 		Seccion unaSeccion = new Seccion("");
 		Titulo titulo = new Titulo("# UnTitulo");
