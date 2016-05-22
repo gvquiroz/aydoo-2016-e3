@@ -34,4 +34,14 @@ public class GestorDeEntradaTest {
 
         Assert.assertEquals(resultado, "no-output");
     }
+
+    @Test
+    public void recibeModoNoOutputLuegoDelNombreDelArchivo(){
+        String args[] = {"mipresentacion.md --mode=no-output"};
+        GestorDeEntrada interfaz = new GestorDeEntrada(args);
+
+        String resultado = interfaz.getModo();
+
+        Assert.assertEquals(resultado, "no-output");
+    }
 }
