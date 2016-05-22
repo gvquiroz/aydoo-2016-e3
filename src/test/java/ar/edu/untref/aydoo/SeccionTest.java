@@ -22,16 +22,26 @@ public class SeccionTest {
 
 		Assert.assertEquals("<section></section>", resultado);
 	}
-	
+
 	@Test
-	public void seccionConTitulo(){
+	public void seccionConTitulo() {
 		Seccion unaSeccion = new Seccion("");
 		Titulo titulo = new Titulo("# UnTitulo");
-		
+
 		unaSeccion.agregarElemento(titulo);
-		Assert.assertEquals("<h1>UnTitulo</h1>", titulo.getSalida());
+
 		Assert.assertEquals("<section><h1>UnTitulo</h1></section>", unaSeccion.getSalida());
 	}
-	
 
+	@Test
+	public void seccionConTituloYSubtitulo() {
+		Seccion unaSeccion = new Seccion("");
+		Titulo titulo = new Titulo("# UnTitulo");
+		SubTitulo subTitulo = new SubTitulo("## UnSubTitulo");
+
+		unaSeccion.agregarElemento(titulo);
+		unaSeccion.agregarElemento(subTitulo);
+
+		Assert.assertEquals("<section><h1>UnTitulo</h1><h2>UnSubTitulo</h2></section>", unaSeccion.getSalida());
+	}
 }
