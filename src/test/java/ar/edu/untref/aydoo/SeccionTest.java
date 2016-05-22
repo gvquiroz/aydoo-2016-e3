@@ -34,6 +34,16 @@ public class SeccionTest {
 	}
 
 	@Test
+	public void seccionConSubtituloSolo() {
+		Seccion unaSeccion = new Seccion("");
+		SubTitulo subTitulo = new SubTitulo("## UnSubTitulo");
+
+		unaSeccion.agregarElemento(subTitulo);
+
+		Assert.assertEquals("<section><h2>UnSubTitulo</h2></section>", unaSeccion.getSalida());
+	}
+	
+	@Test
 	public void seccionConTituloYSubtitulo() {
 		Seccion unaSeccion = new Seccion("");
 		Titulo titulo = new Titulo("# UnTitulo");
