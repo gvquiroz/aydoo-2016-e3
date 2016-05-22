@@ -53,4 +53,13 @@ public class GestorDeEntradaTest {
 
         Assert.assertEquals("no-output",resultado);
     }
+    @Test
+    public void recibeNombreDeCarpetaDeSalidaEnArgumentoOutput(){
+        String args[] = {"--output=presentacion1"};
+        GestorDeEntrada interfaz = new GestorDeEntrada(args);
+
+        String resultado = interfaz.getNombreDeCarpetaDeSalida();
+
+        Assert.assertEquals("presentacion1",resultado);
+    }
 }
