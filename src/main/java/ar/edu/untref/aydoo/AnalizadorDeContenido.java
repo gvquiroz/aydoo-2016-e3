@@ -35,6 +35,12 @@ public class AnalizadorDeContenido {
                     SubTitulo unSubTitulo = new SubTitulo (contenidoActual);
                     this.elementos.add(unSubTitulo);
                     break;
+
+                case "i:":
+                    Imagen unaImagen = new Imagen (contenidoActual);
+                    this.elementos.add(unaImagen);
+                    break;
+
             }
         }
 
