@@ -9,12 +9,24 @@ import java.util.List;
 
 public class AnalizadorDeContenidoTest {
 
-    @Test
-    public void recibeUnTitulo(){
+    private List<Elemento> elementosContenido = new LinkedList<Elemento>();
 
-        List<Elemento> elementosContenido = new LinkedList<Elemento>();
+    @Test
+    public void recibeTitulo(){
 
         String contenido = "# unTitulo/n";
+        AnalizadorDeContenido analizador = new AnalizadorDeContenido(contenido);
+        analizador.analizarContenido();
+        elementosContenido = analizador.obtenerContenidoAnalizado();
+
+        Assert.assertEquals(contenido, elementosContenido.get(0).getEntrada());
+
+    }
+
+    @Test
+    public void recibeSubtitulo(){
+
+        String contenido = "## unSubTitulo/n";
         AnalizadorDeContenido analizador = new AnalizadorDeContenido(contenido);
         analizador.analizarContenido();
         elementosContenido = analizador.obtenerContenidoAnalizado();

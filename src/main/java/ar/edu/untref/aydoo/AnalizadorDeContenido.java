@@ -30,6 +30,11 @@ public class AnalizadorDeContenido {
                     Titulo unTitulo = new Titulo (contenidoActual);
                     this.elementos.add(unTitulo);
                     break;
+
+                case "##":
+                    SubTitulo unSubTitulo = new SubTitulo (contenidoActual);
+                    this.elementos.add(unSubTitulo);
+                    break;
             }
         }
 
