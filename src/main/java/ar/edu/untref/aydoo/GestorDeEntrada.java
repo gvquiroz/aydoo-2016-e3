@@ -25,8 +25,6 @@ public class GestorDeEntrada {
                 this.validadorDeNombreDeEntrada(this.nombreDeArchivo);
             }
         }
-
-
     }
 
     public String getModo() {
