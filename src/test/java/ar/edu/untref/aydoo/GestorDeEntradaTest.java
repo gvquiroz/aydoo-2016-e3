@@ -3,6 +3,8 @@ package ar.edu.untref.aydoo;
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.io.IOException;
+
 /**
  * Created by Velonter on 5/22/2016.
  */
@@ -80,4 +82,47 @@ public class GestorDeEntradaTest {
 
         Assert.assertEquals("mipresentacion.md",resultado);
     }
+
+    @SuppressWarnings("unused")
+    @Test (expected = NombreDeArchivoIncorrectoException.class)
+    public void miArchivoContieneUnaEnie() throws IOException {
+        String args[] = {"mañana.md" , "--mode=no-output"};
+        GestorDeEntrada interfaz = new GestorDeEntrada(args);
+
+        String resultado = interfaz.getNombreDeArchivo();
+    }
+
+    @SuppressWarnings("unused")
+    @Test (expected = NombreDeArchivoIncorrectoException.class)
+    public void miArchivoContieneUnaEnieMayuscula() throws IOException {
+        String args[] = {"maÑana.md" , "--mode=no-output"};
+        GestorDeEntrada interfaz = new GestorDeEntrada(args);
+
+        String resultado = interfaz.getNombreDeArchivo();
+    }
+
+    @SuppressWarnings("unused")
+    @Test (expected = NombreDeArchivoIncorrectoException.class)
+    public void nombreDeArchivoContieneEspaciosEnBlanco() throws IOException {
+        String args[] = {"mi presentacion.md" , "--mode=no-output"};
+        GestorDeEntrada interfaz = new GestorDeEntrada(args);
+
+        String resultado = interfaz.getNombreDeArchivo();
+    }
+    @SuppressWarnings("unused")
+    @Test (expected = NombreDeArchivoIncorrectoException.class)
+    public void nombreDeArchivoContieneBarraDesplazada() throws IOException {
+        String args[] = {"mi/presentacion.md" , "--mode=no-output"};
+        GestorDeEntrada interfaz = new GestorDeEntrada(args);
+        String resultado = interfaz.getNombreDeArchivo();
+    }
+
+    @SuppressWarnings("unused")
+    @Test (expected = NombreDeArchivoIncorrectoException.class)
+    public void nombreDeArchivoContieneAcento() throws IOException {
+        String args[] = {"Camión.md" , "--mode=no-output"};
+        GestorDeEntrada interfaz = new GestorDeEntrada(args);
+        String resultado = interfaz.getNombreDeArchivo();
+    }
+
 }

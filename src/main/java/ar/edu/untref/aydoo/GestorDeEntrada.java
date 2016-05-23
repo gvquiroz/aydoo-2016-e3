@@ -1,5 +1,7 @@
 package ar.edu.untref.aydoo;
 
+import java.util.regex.Pattern;
+
 /**
  * Created by Velonter on 5/22/2016.
  */
@@ -12,7 +14,6 @@ public class GestorDeEntrada {
 
     public GestorDeEntrada (String argumentos[]){
         for (String datos : argumentos) {
-
             if (datos.contains("--mode=")) {
                 String[] descomposicionDeModo = datos.split("=");
                 this.modo = descomposicionDeModo[1];
@@ -21,8 +22,11 @@ public class GestorDeEntrada {
                 this.nombreDeCarpetaDeSalida = descomposicionDelOutput[1];
             } else {
                 this.nombreDeArchivo = datos;
+                this.validadorDeNombreDeEntrada(this.nombreDeArchivo);
             }
         }
+
+
     }
 
     public String getModo() {
@@ -31,7 +35,29 @@ public class GestorDeEntrada {
     public String getNombreDeCarpetaDeSalida(){
         return this.nombreDeCarpetaDeSalida;
     }
+
     public String getNombreDeArchivo(){
         return this.nombreDeArchivo;
     }
+
+
+    private void validadorDeNombreDeEntrada(String nombreDeArchivo) {
+
+        if (nombreDeArchivo.toLowerCase().contains("ñ")) {
+            throw new NombreDeArchivoIncorrectoException();
+        }
+
+        if (nombreDeArchivo.contains(" ")) {
+            throw new NombreDeArchivoIncorrectoException();
+        }
+        if (nombreDeArchivo.contains("/")) {
+            throw new NombreDeArchivoIncorrectoException();
+        }
+        // Ver si se puede cambiar por una mejor implementacion
+        if (Pattern.matches(".*[áàäéèëíìïóòöúùuñÁÀÄÉÈËÍÌÏÓÒÖÚÙÜ].*", nombreDeArchivo)) {
+            throw new NombreDeArchivoIncorrectoException();
+        }
+
+    }
+
 }
