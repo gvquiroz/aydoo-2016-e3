@@ -17,6 +17,7 @@ public class GestorDeEntrada {
             if (datos.contains("--mode=")) {
                 String[] descomposicionDeModo = datos.split("=");
                 this.modo = descomposicionDeModo[1];
+                this.validadorDeArgumentoMode(this.modo);
             } else if (datos.contains("--output=")){
                 String[] descomposicionDelOutput = datos.split("=");
                 this.nombreDeCarpetaDeSalida = descomposicionDelOutput[1];
@@ -48,5 +49,10 @@ public class GestorDeEntrada {
             throw new NombreDeArchivoIncorrectoException();
         }
     }
+    private void validadorDeArgumentoMode(String mode){
 
+        if (!(mode.equals("default") || mode.equals("no-output"))){
+            throw new ArgumentoInvalidoException();
+        }
+    }
 }

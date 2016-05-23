@@ -125,4 +125,10 @@ public class GestorDeEntradaTest {
         String resultado = interfaz.getNombreDeArchivo();
     }
 
+    @Test (expected = ArgumentoInvalidoException.class)
+    public void recibeUnModoInvalido() throws IOException {
+        String args[] = {"Presentacion.md" , "--mode=gaby"};
+        GestorDeEntrada interfaz = new GestorDeEntrada(args);
+        String resultado = interfaz.getNombreDeArchivo();
+    }
 }
