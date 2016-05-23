@@ -88,7 +88,6 @@ public class GestorDeEntradaTest {
     public void miArchivoContieneUnaEnie() throws IOException {
         String args[] = {"mañana.md" , "--mode=no-output"};
         GestorDeEntrada interfaz = new GestorDeEntrada(args);
-
         String resultado = interfaz.getNombreDeArchivo();
     }
 
@@ -97,7 +96,6 @@ public class GestorDeEntradaTest {
     public void miArchivoContieneUnaEnieMayuscula() throws IOException {
         String args[] = {"maÑana.md" , "--mode=no-output"};
         GestorDeEntrada interfaz = new GestorDeEntrada(args);
-
         String resultado = interfaz.getNombreDeArchivo();
     }
 
@@ -106,7 +104,6 @@ public class GestorDeEntradaTest {
     public void nombreDeArchivoContieneEspaciosEnBlanco() throws IOException {
         String args[] = {"mi presentacion.md" , "--mode=no-output"};
         GestorDeEntrada interfaz = new GestorDeEntrada(args);
-
         String resultado = interfaz.getNombreDeArchivo();
     }
     @SuppressWarnings("unused")
@@ -129,6 +126,6 @@ public class GestorDeEntradaTest {
     public void recibeUnModoInvalido() throws IOException {
         String args[] = {"Presentacion.md" , "--mode=gaby"};
         GestorDeEntrada interfaz = new GestorDeEntrada(args);
-        String resultado = interfaz.getNombreDeArchivo();
+        String resultado = interfaz.getModo();
     }
 }
