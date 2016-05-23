@@ -23,24 +23,25 @@ public class AnalizadorDeContenido {
 
         for (String contenidoActual : this.contenidoPorLineas){
 
-            String comienzo = contenidoActual.substring(0,2);
+            String comienzo = contenidoActual.substring(0,1);
             switch(comienzo){
 
-                case "# ":
-                    Titulo unTitulo = new Titulo (contenidoActual);
-                    this.elementos.add(unTitulo);
+                case "#":
+                    if (contenidoActual.startsWith("# ")){
+                        Titulo unTitulo = new Titulo (contenidoActual);
+                        this.elementos.add(unTitulo);
+                    }
+                    else if(contenidoActual.startsWith("##")){
+                        SubTitulo unSubTitulo = new SubTitulo (contenidoActual);
+                        this.elementos.add(unSubTitulo);
+                    }
                     break;
 
-                case "##":
-                    SubTitulo unSubTitulo = new SubTitulo (contenidoActual);
-                    this.elementos.add(unSubTitulo);
-                    break;
-
-                case "i:":
+                case "i":
                     Imagen unaImagen = new Imagen (contenidoActual);
                     this.elementos.add(unaImagen);
                     break;
-
+                
             }
         }
 
