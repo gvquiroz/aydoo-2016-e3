@@ -43,21 +43,12 @@ public class GestorDeEntrada {
 
     private void validadorDeNombreDeEntrada(String nombreDeArchivo) {
 
-        if (nombreDeArchivo.toLowerCase().contains("ñ")) {
+        if (nombreDeArchivo.toLowerCase().contains("ñ") ||
+                nombreDeArchivo.contains(" ") ||
+                nombreDeArchivo.contains("/") ||
+                Pattern.matches(".*[áàäéèëíìïóòöúùuñÁÀÄÉÈËÍÌÏÓÒÖÚÙÜ].*", nombreDeArchivo)) {
             throw new NombreDeArchivoIncorrectoException();
         }
-
-        if (nombreDeArchivo.contains(" ")) {
-            throw new NombreDeArchivoIncorrectoException();
-        }
-        if (nombreDeArchivo.contains("/")) {
-            throw new NombreDeArchivoIncorrectoException();
-        }
-        // Ver si se puede cambiar por una mejor implementacion
-        if (Pattern.matches(".*[áàäéèëíìïóòöúùuñÁÀÄÉÈËÍÌÏÓÒÖÚÙÜ].*", nombreDeArchivo)) {
-            throw new NombreDeArchivoIncorrectoException();
-        }
-
     }
 
 }
