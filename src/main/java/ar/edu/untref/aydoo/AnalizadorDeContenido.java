@@ -41,7 +41,7 @@ public class AnalizadorDeContenido {
                     Imagen unaImagen = new Imagen (contenidoActual);
                     this.elementos.add(unaImagen);
                     break;
-                
+
             }
         }
 
