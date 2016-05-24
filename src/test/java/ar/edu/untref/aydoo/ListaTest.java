@@ -50,7 +50,7 @@ public class ListaTest {
 
         Lista unaLista = new Lista("*2 papas");
         unaLista.agregarItem("*4 cebollas");
-        unaLista.agregarItem("2 choclos");
+        unaLista.agregarItem("*2 choclos");
         String listaSalida = unaLista.getSalida();
 
         Assert.assertEquals("<ul>\n<li>2 papas</li>\n<li>4 cebollas</li>\n<li>2 choclos</li>\n</ul>\n", listaSalida);
