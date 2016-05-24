@@ -23,7 +23,10 @@ public class Seccion extends Elemento {
 	}
 
 	public void agregarElemento(Elemento unElemento) {
+
 		this.elementos.add(unElemento);
+		this.setEntrada(this.getEntrada().concat(unElemento.getEntrada()));
+
 	}
 
 }

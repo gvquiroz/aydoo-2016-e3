@@ -36,7 +36,7 @@ public class SeccionTest {
 	@Test
 	public void seccionConTitulo() {
 		Seccion unaSeccion = new Seccion("");
-		Titulo titulo = new Titulo("# UnTitulo");
+		Titulo titulo = new Titulo("# UnTitulo\n");
 
 		unaSeccion.agregarElemento(titulo);
 
@@ -56,7 +56,7 @@ public class SeccionTest {
 	@Test
 	public void seccionConTituloYSubtitulo() {
 		Seccion unaSeccion = new Seccion("");
-		Titulo titulo = new Titulo("# UnTitulo");
+		Titulo titulo = new Titulo("# UnTitulo\n");
 		SubTitulo subTitulo = new SubTitulo("## UnSubTitulo");
 
 		unaSeccion.agregarElemento(titulo);
