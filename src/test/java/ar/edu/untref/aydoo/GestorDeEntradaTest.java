@@ -128,4 +128,14 @@ public class GestorDeEntradaTest {
         GestorDeEntrada interfaz = new GestorDeEntrada(args);
         String resultado = interfaz.getModo();
     }
+
+    @Test
+    public void preguntoNombreDeCarpetaCuandoReciboNombreDeArchivoConExtensionMd(){
+        String args[] = {"Presentacion.md"};
+        GestorDeEntrada interfaz = new GestorDeEntrada(args);
+        String resultado = interfaz.getNombreDeCarpetaDeSalida();
+
+        Assert.assertEquals("Presentacion", resultado);
+    }
+
 }

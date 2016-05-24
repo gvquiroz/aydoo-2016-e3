@@ -8,7 +8,7 @@ import java.util.regex.Pattern;
 public class GestorDeEntrada {
 
     private String nombreDeArchivo;
-    private String nombreDeCarpetaDeSalida = "";
+    private String nombreDeCarpetaDeSalida = "default";
     // Por si no ingresa modo inicializa en default
     private String modo = "default";
 
@@ -24,6 +24,7 @@ public class GestorDeEntrada {
             } else {
                 this.nombreDeArchivo = datos;
                 this.validadorDeNombreDeEntrada(this.nombreDeArchivo);
+                this.generarNombreDeCarpeta();
             }
         }
     }
@@ -52,6 +53,15 @@ public class GestorDeEntrada {
     private void validadorDeModo(String mode){
         if (!(mode.equals("default") || mode.equals("no-output"))){
             throw new ArgumentoInvalidoException();
+        }
+    }
+    private void generarNombreDeCarpeta(){
+        if (this.nombreDeCarpetaDeSalida.equals("default")){
+            this.nombreDeCarpetaDeSalida = this.nombreDeArchivo;
+            if (this.nombreDeCarpetaDeSalida.contains(".")){
+                String[] descomposicionDelNombreDeLaCarpeta = this.nombreDeCarpetaDeSalida.split("\\.");
+                this.nombreDeCarpetaDeSalida = descomposicionDelNombreDeLaCarpeta[0];
+            }
         }
     }
 }
