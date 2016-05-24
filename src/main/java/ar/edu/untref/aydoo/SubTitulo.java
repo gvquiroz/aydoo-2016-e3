@@ -12,13 +12,13 @@ public class SubTitulo extends Elemento{
 
         //<h2>un subtitulo</h2>
 
-        String subTitulo = this.getEntrada();
-        subTitulo = subTitulo.substring(3);
+        String entrada = this.getEntrada();
+        int barraN = entrada.indexOf("\n");
+        String subTituloLimpio = entrada.substring(3,barraN);
         String salida;
-        salida = "<h2>"+subTitulo+"</h2>";
+        salida = "<h2>"+subTituloLimpio+"</h2>";
 
         return salida;
 
     }
-
 }
