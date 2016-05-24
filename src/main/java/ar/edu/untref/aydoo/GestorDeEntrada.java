@@ -15,12 +15,10 @@ public class GestorDeEntrada {
     public GestorDeEntrada (String argumentos[]){
         for (String datos : argumentos) {
             if (datos.contains("--mode=")) {
-                String[] descomposicionDeModo = datos.split("=");
-                this.modo = descomposicionDeModo[1];
+                this.modo = datos.split("=")[1];
                 this.validadorDeModo(this.modo);
             } else if (datos.contains("--output=")){
-                String[] descomposicionDelOutput = datos.split("=");
-                this.nombreDeCarpetaDeSalida = descomposicionDelOutput[1];
+                this.nombreDeCarpetaDeSalida = datos.split("=")[1];
             } else {
                 this.nombreDeArchivo = datos;
                 this.validadorDeNombreDeEntrada(this.nombreDeArchivo);
@@ -58,8 +56,9 @@ public class GestorDeEntrada {
         if (this.nombreDeCarpetaDeSalida.equals("default")){
             this.nombreDeCarpetaDeSalida = this.nombreDeArchivo;
             if (this.nombreDeCarpetaDeSalida.contains(".")){
-                String[] descomposicionDelNombreDeLaCarpeta = this.nombreDeCarpetaDeSalida.split("\\.md");
-                this.nombreDeCarpetaDeSalida = descomposicionDelNombreDeLaCarpeta[0];
+                String descomposicionDelNombreDeLaCarpeta = this.nombreDeCarpetaDeSalida.split("\\.md")[0];
+
+                this.nombreDeCarpetaDeSalida = descomposicionDelNombreDeLaCarpeta;
             }
         }
     }
