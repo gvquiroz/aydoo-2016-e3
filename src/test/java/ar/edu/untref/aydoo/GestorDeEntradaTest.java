@@ -137,5 +137,12 @@ public class GestorDeEntradaTest {
 
         Assert.assertEquals("Presentacion", resultado);
     }
+    @Test
+    public void preguntoNombreDeCarpetaCuandoReciboNombreDeArchivoSinExtension(){
+        String args[] = {"Presentacion"};
+        GestorDeEntrada interfaz = new GestorDeEntrada(args);
+        String resultado = interfaz.getNombreDeCarpetaDeSalida();
 
+        Assert.assertEquals("Presentacion", resultado);
+    }
 }

@@ -42,7 +42,6 @@ public class GestorDeEntrada {
 
 
     private void validadorDeNombreDeEntrada(String nombreDeArchivo) {
-
         if (nombreDeArchivo.toLowerCase().contains("ñ") ||
                 nombreDeArchivo.contains(" ") ||
                 nombreDeArchivo.contains("/") ||
