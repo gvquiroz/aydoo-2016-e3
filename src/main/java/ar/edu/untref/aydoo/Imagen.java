@@ -13,10 +13,11 @@ public class Imagen extends Elemento {
 
         //<img src=”imagen.png />
 
-        String imagen = this.getEntrada();
-        imagen = imagen.substring(2);
+        String entrada = this.getEntrada();
+        int barraN = entrada.indexOf("\n");
+        String imagenLimpia = entrada.substring(2, barraN);
         String salida;
-        salida = "<img src= "+imagen+" />";
+        salida = "<img src= "+imagenLimpia+" />";
 
         return salida;
 

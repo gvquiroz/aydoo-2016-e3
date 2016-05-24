@@ -8,16 +8,16 @@ public class ImagenTest {
     @Test
     public void muestraImagenEntrante(){
 
-        Imagen unaImagen = new Imagen("i:fotoImputado.png");
+        Imagen unaImagen = new Imagen("i:fotoImputado.png\n");
         String imagenEntrada = unaImagen.getEntrada();
 
-        Assert.assertEquals("i:fotoImputado.png", imagenEntrada);
+        Assert.assertEquals("i:fotoImputado.png\n", imagenEntrada);
     }
 
     @Test
     public void muestraImagenTransformadaSalida(){
 
-        Imagen unaImagen = new Imagen("i:fotoImputado.png");
+        Imagen unaImagen = new Imagen("i:fotoImputado.png\n");
         String imagenSalida = unaImagen.getSalida();
 
         Assert.assertEquals("<img src= fotoImputado.png />", imagenSalida);

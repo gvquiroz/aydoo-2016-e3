@@ -24,7 +24,9 @@ public class Lista extends Elemento{
 
         for(int i = 1; i < listaDeItems.length; i++){
 
-            lista = lista.concat("<li>" + listaDeItems[i] + "</li>" + "\n");
+            int barraN = listaDeItems[i].indexOf("\n");
+            String itemLimpio = listaDeItems[i].substring(0, barraN);
+            lista = lista.concat("<li>" + itemLimpio + "</li>" + "\n");
         }
 
         String salida;
