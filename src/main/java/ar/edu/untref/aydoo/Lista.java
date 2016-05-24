@@ -13,12 +13,27 @@ public class Lista extends Elemento{
 
     public String getSalida() {
 
-        String lista = this.getEntrada();
-        lista = lista.substring(0);
-        String salida;
-        salida = "<li>"+lista+"</li>"+"\n";
+        /*<ul>
+        <li>un item de una lista</li>
+        <li>otro item de una lista</li>
+        </ul>
+        */
+        String entrada = this.getEntrada();
+        String [] listaDeItems = entrada.split("\\*");
+        String lista = "";
 
-        salida = "<ul>" + "\n" + salida + "</ul>\n";
+        for(int i = 1; i < listaDeItems.length; i++){
+
+            lista = lista.concat("<li>" + listaDeItems[i] + "</li>" + "\n");
+        }
+
+        String salida;
+        salida = "<ul>" + "\n" + lista + "</ul>\n";
         return salida;
+    }
+
+    public void agregarItem(String unItem) {
+
+        this.setEntrada(this.getEntrada().concat(unItem));
     }
 }
