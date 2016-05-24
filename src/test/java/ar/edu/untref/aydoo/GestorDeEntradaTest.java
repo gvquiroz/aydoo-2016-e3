@@ -131,11 +131,11 @@ public class GestorDeEntradaTest {
 
     @Test
     public void preguntoNombreDeCarpetaCuandoReciboNombreDeArchivoConExtensionMd(){
-        String args[] = {"Presentacion.md"};
+        String args[] = {"mi_presentacion.md"};
         GestorDeEntrada interfaz = new GestorDeEntrada(args);
         String resultado = interfaz.getNombreDeCarpetaDeSalida();
 
-        Assert.assertEquals("Presentacion", resultado);
+        Assert.assertEquals("mi_presentacion", resultado);
     }
     @Test
     public void preguntoNombreDeCarpetaCuandoReciboNombreDeArchivoSinExtension(){
@@ -144,5 +144,13 @@ public class GestorDeEntradaTest {
         String resultado = interfaz.getNombreDeCarpetaDeSalida();
 
         Assert.assertEquals("Presentacion", resultado);
+    }
+    @Test
+    public void pidoNombreDeCarpetaCuandoReciboNombreConDosPuntosYExtension(){
+        String args[] = {"mi.presentacion.md"};
+        GestorDeEntrada interfaz = new GestorDeEntrada(args);
+        String resultado = interfaz.getNombreDeCarpetaDeSalida();
+
+        Assert.assertEquals("mi.presentacion", resultado);
     }
 }

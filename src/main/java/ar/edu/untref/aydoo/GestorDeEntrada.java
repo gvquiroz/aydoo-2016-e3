@@ -58,7 +58,7 @@ public class GestorDeEntrada {
         if (this.nombreDeCarpetaDeSalida.equals("default")){
             this.nombreDeCarpetaDeSalida = this.nombreDeArchivo;
             if (this.nombreDeCarpetaDeSalida.contains(".")){
-                String[] descomposicionDelNombreDeLaCarpeta = this.nombreDeCarpetaDeSalida.split("\\.");
+                String[] descomposicionDelNombreDeLaCarpeta = this.nombreDeCarpetaDeSalida.split("\\.md");
                 this.nombreDeCarpetaDeSalida = descomposicionDelNombreDeLaCarpeta[0];
             }
         }
