@@ -21,10 +21,11 @@ public class AnalizadorDeContenido {
 
     public void analizarContenido(){
 
+        String comienzoLineaAnterior = null;
+
         for (String contenidoActual : this.contenidoPorLineas){
 
             String comienzoDeLinea = contenidoActual.substring(0,1);
-            String comienzoLineaAnterior = null;
 
             switch(comienzoDeLinea){
 
@@ -45,7 +46,7 @@ public class AnalizadorDeContenido {
                     break;
 
                 case "*":
-                    if(comienzoLineaAnterior != "*"){
+                    if(!comienzoDeLinea.equals(comienzoLineaAnterior) ){
                         Lista unaLista = new Lista (contenidoActual);
                         this.elementos.add(unaLista);
                     }
@@ -71,7 +72,7 @@ public class AnalizadorDeContenido {
 
             int j = contenido.indexOf("\n", i) + 1;
             this.contenidoPorLineas.add(contenido.substring(i, j));
-            i = j + 1;
+            i = j - 1;
         }
 
     }

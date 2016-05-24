@@ -59,4 +59,16 @@ public class AnalizadorDeContenidoTest {
 
     }
 
+    @Test
+    public void recibeListaConVariosItems(){
+
+        String contenido = "*unItem\n*otroItem\n*tercerItem\n";
+        AnalizadorDeContenido analizador = new AnalizadorDeContenido(contenido);
+        analizador.analizarContenido();
+        elementosContenido = analizador.obtenerContenidoAnalizado();
+
+        Assert.assertEquals(contenido, elementosContenido.get(0).getEntrada());
+
+    }
+
 }
