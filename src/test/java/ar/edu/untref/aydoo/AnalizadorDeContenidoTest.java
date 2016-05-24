@@ -14,7 +14,7 @@ public class AnalizadorDeContenidoTest {
     @Test
     public void recibeTitulo(){
 
-        String contenido = "# unTitulo/n";
+        String contenido = "# unTitulo\n";
         AnalizadorDeContenido analizador = new AnalizadorDeContenido(contenido);
         analizador.analizarContenido();
         elementosContenido = analizador.obtenerContenidoAnalizado();
@@ -26,7 +26,7 @@ public class AnalizadorDeContenidoTest {
     @Test
     public void recibeSubtitulo(){
 
-        String contenido = "## unSubTitulo/n";
+        String contenido = "## unSubTitulo\n";
         AnalizadorDeContenido analizador = new AnalizadorDeContenido(contenido);
         analizador.analizarContenido();
         elementosContenido = analizador.obtenerContenidoAnalizado();
@@ -38,7 +38,19 @@ public class AnalizadorDeContenidoTest {
     @Test
     public void recibeImagen(){
 
-        String contenido = "i:imagen.png/n";
+        String contenido = "i:imagen.png\n";
+        AnalizadorDeContenido analizador = new AnalizadorDeContenido(contenido);
+        analizador.analizarContenido();
+        elementosContenido = analizador.obtenerContenidoAnalizado();
+
+        Assert.assertEquals(contenido, elementosContenido.get(0).getEntrada());
+
+    }
+
+    @Test
+    public void recibeLista(){
+
+        String contenido = "*unItem\n";
         AnalizadorDeContenido analizador = new AnalizadorDeContenido(contenido);
         analizador.analizarContenido();
         elementosContenido = analizador.obtenerContenidoAnalizado();

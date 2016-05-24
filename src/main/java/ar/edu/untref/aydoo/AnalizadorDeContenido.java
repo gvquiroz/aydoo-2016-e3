@@ -23,8 +23,10 @@ public class AnalizadorDeContenido {
 
         for (String contenidoActual : this.contenidoPorLineas){
 
-            String comienzo = contenidoActual.substring(0,1);
-            switch(comienzo){
+            String comienzoDeLinea = contenidoActual.substring(0,1);
+            String comienzoLineaAnterior = null;
+
+            switch(comienzoDeLinea){
 
                 case "#":
                     if (contenidoActual.startsWith("# ")){
@@ -42,7 +44,22 @@ public class AnalizadorDeContenido {
                     this.elementos.add(unaImagen);
                     break;
 
+                case "*":
+                    if(comienzoLineaAnterior != "*"){
+                        Lista unaLista = new Lista (contenidoActual);
+                        this.elementos.add(unaLista);
+                    }
+                    else {
+                        Lista unaLista;
+                        unaLista = (Lista) this.elementos.get(this.elementos.size()-1);
+                        unaLista.agregarItem(contenidoActual);
+                        this.elementos.add(this.elementos.size()-1, unaLista);
+                    }
+                    break;
+
             }
+
+            comienzoLineaAnterior = comienzoDeLinea;
         }
 
 
@@ -52,7 +69,7 @@ public class AnalizadorDeContenido {
 
         for(int i = 0; i < contenido.length(); i++){
 
-            int j = contenido.indexOf("/n", i) + 2;
+            int j = contenido.indexOf("\n", i) + 1;
             this.contenidoPorLineas.add(contenido.substring(i, j));
             i = j + 1;
         }
