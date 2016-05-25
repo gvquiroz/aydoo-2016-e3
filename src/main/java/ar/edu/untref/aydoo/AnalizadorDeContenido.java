@@ -21,49 +21,69 @@ public class AnalizadorDeContenido {
 
     public void analizarContenido(){
 
+        String comienzoDeLinea;
         String comienzoLineaAnterior = null;
+        String comienzoLineaSiguiente;
 
-        for (String contenidoActual : this.contenidoPorLineas){
+        Seccion unaSeccion = null;
+        Lista unaLista = null;
 
-            String comienzoDeLinea = contenidoActual.substring(0,1);
+        for (int i = 0; i < this.contenidoPorLineas.size(); i++) {
 
-            switch(comienzoDeLinea){
+            comienzoDeLinea = this.contenidoPorLineas.get(i).substring(0,1);
 
-                case "#":
-                    if (contenidoActual.startsWith("# ")){
-                        Titulo unTitulo = new Titulo (contenidoActual);
-                        this.elementos.add(unTitulo);
-                    }
-                    else if(contenidoActual.startsWith("##")){
-                        SubTitulo unSubTitulo = new SubTitulo (contenidoActual);
-                        this.elementos.add(unSubTitulo);
-                    }
-                    break;
-
-                case "i":
-                    Imagen unaImagen = new Imagen (contenidoActual);
-                    this.elementos.add(unaImagen);
-                    break;
-
-                case "*":
-                    if(!comienzoDeLinea.equals(comienzoLineaAnterior) ){
-                        Lista unaLista = new Lista (contenidoActual);
-                        this.elementos.add(unaLista);
-                    }
-                    else {
-                        Lista unaLista;
-                        unaLista = (Lista) this.elementos.get(this.elementos.size()-1);
-                        unaLista.agregarItem(contenidoActual);
-                        this.elementos.add(this.elementos.size()-1, unaLista);
-                    }
-                    break;
-
+            if (i+1 < this.contenidoPorLineas.size()){
+                comienzoLineaSiguiente = this.contenidoPorLineas.get(i+1).substring(0,1);
+            } else {
+                comienzoLineaSiguiente = "";
             }
 
-            comienzoLineaAnterior = comienzoDeLinea;
+            if (comienzoDeLinea.equals("-")) {
+                unaSeccion = new Seccion("");
+
+            } else {
+
+                switch (comienzoDeLinea) {
+
+                    case "#":
+                        if (this.contenidoPorLineas.get(i).startsWith("# ")) {
+                            Titulo unTitulo = new Titulo(this.contenidoPorLineas.get(i));
+                            unaSeccion.agregarElemento(unTitulo);
+                        } else if (this.contenidoPorLineas.get(i).startsWith("##")) {
+                            SubTitulo unSubTitulo = new SubTitulo(this.contenidoPorLineas.get(i));
+                            unaSeccion.agregarElemento(unSubTitulo);
+                        }
+                        break;
+
+                    case "i":
+                        Imagen unaImagen = new Imagen(this.contenidoPorLineas.get(i));
+                        unaSeccion.agregarElemento(unaImagen);
+                        break;
+
+                    case "*":
+                        if(!comienzoDeLinea.equals(comienzoLineaAnterior)){
+                            unaLista = new Lista (this.contenidoPorLineas.get(i));
+                        }
+                        else {
+                            unaLista.agregarItem(this.contenidoPorLineas.get(i));
+                        }
+                        if ((!comienzoLineaSiguiente.equals(comienzoDeLinea))){
+                            unaSeccion.agregarElemento(unaLista);
+                        }
+                        break;
+                    default:
+                        Texto unTexto = new Texto(this.contenidoPorLineas.get(i));
+                        unaSeccion.agregarElemento(unTexto);
+                        break;
+
+                }
+                comienzoLineaAnterior = comienzoDeLinea;
+
+                if ((comienzoLineaSiguiente.equals("-")) || (i+1 == this.contenidoPorLineas.size())){
+                    this.elementos.add(unaSeccion);
+                }
+            }
         }
-
-
     }
 
     private void separarLineasContenido(String contenido){
