@@ -30,31 +30,40 @@ public class GestorDeArchivosTest {
 	@Test
 	public void testRenombrarCarpetaPlantillaAPlantilla1() throws IOException {
 		GestorDeArchivos gestor = new GestorDeArchivos();
-		gestor.renombrarArchivo("plantilla", "plantilla1");
-		
-		File fichero = new File("plantilla1");
-		
+		gestor.renombrarArchivo("template", "template1");
+
+		File fichero = new File("template1");
+
 		Assert.assertEquals(true, fichero.exists());
 	}
-	
+
 	@Test
 	public void testRenombrarCarpetaPlantilla1APlantilla2() throws IOException {
 		GestorDeArchivos gestor = new GestorDeArchivos();
-		gestor.renombrarArchivo("plantilla1", "plantilla2");
-		
-		File fichero = new File("plantilla2");
-		
+		gestor.renombrarArchivo("template1", "template2");
+
+		File fichero = new File("template2");
+
 		Assert.assertEquals(true, fichero.exists());
 	}
-	
+
 	@Test
 	public void testRenombrarCarpetaPlantilla2APlantilla() throws IOException {
 		GestorDeArchivos gestor = new GestorDeArchivos();
-		gestor.renombrarArchivo("plantilla2", "plantilla");
-		
-		File fichero = new File("plantilla");
-		
+		gestor.renombrarArchivo("template2", "template");
+
+		File fichero = new File("template");
+
 		Assert.assertEquals(true, fichero.exists());
+	}
+
+	@Test
+	public void testCopiarCarpeta() throws IOException {
+		GestorDeArchivos gestor = new GestorDeArchivos();
+		File origen = new File("template");
+		File destino = new File("./target/plantillaCopia");
+		gestor.copiarDirectorio(origen, destino);
+
 	}
 
 }

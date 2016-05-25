@@ -9,7 +9,6 @@ public class GestorDeArchivos {
 
 	public void renombrarArchivo(String antes, String despues) throws java.io.IOException {
 		File fichero = new File(antes);
-
 		File fichero2 = new File(despues);
 
 		boolean success = fichero.renameTo(fichero2);
