@@ -5,7 +5,6 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.regex.Pattern;
 
 /**
  * Created by Velonter on 5/20/2016.
@@ -25,11 +24,9 @@ public class LectorDeMarkdown {
 		FileReader file = new FileReader(archivo);
 		BufferedReader b = new BufferedReader(file);
 		while ((cadena = b.readLine()) != null) {
-			// System.out.println(cadena);
 			resultado = resultado + "\n" + cadena;
 		}
 		b.close();
-		System.out.println(resultado);
 		return resultado;
 	}
 }

@@ -1,6 +1,7 @@
 package ar.edu.untref.aydoo;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 
 import org.junit.Assert;
@@ -65,5 +66,14 @@ public class GestorDeArchivosTest {
 		gestor.copiarDirectorio(origen, destino);
 
 	}
+	
+    @Test
+    public void testLeerArchivo() throws FileNotFoundException, IOException{
+    	File archivo = new File("mipresentacion1.md");
+    	GestorDeArchivos lector = new GestorDeArchivos();
+    	lector.leerArchivo(archivo);
+    }
+    
+
 
 }
