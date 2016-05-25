@@ -54,6 +54,20 @@ public class AnalizadorDeContenidoTest {
     }
 
     @Test
+    public void recibeTexto(){
+
+        String contenido = "---\nEsto es un texto\n";
+        AnalizadorDeContenido analizador = new AnalizadorDeContenido(contenido);
+        analizador.analizarContenido();
+        elementosContenido = analizador.obtenerContenidoAnalizado();
+
+        String entrada = "Esto es un texto\n";
+
+        Assert.assertEquals(entrada, elementosContenido.get(0).getEntrada());
+
+    }
+
+    @Test
     public void recibeLista(){
 
         String contenido = "---\n*unItem\n";
@@ -82,7 +96,7 @@ public class AnalizadorDeContenidoTest {
     }
 
     @Test
-    public void recibeSeccionesUnaConTituloYOtraConTituloYSubtituloVerificaPrimeraSeccion(){
+    public void recibeDosSeccionesUnaConTituloYOtraConTituloYSubtituloVerificaPrimeraSeccion(){
 
         String contenido = "---\n# unTitulo\n---\n# unTitulo\n## unSubTitulo\n";
 
@@ -97,7 +111,7 @@ public class AnalizadorDeContenidoTest {
     }
 
     @Test
-    public void recibeSeccionesUnaConTituloYOtraConTituloYSubtituloVerificaSegundaSeccion(){
+    public void recibeDosSeccionesUnaConTituloYOtraConTituloYSubtituloVerificaSegundaSeccion(){
 
         String contenido = "---\n# unTitulo\n---\n# unTitulo\n## unSubTitulo\n";
 
@@ -112,7 +126,7 @@ public class AnalizadorDeContenidoTest {
     }
 
     @Test
-    public void recibeVariasSeccionesConVariosElementos(){
+    public void recibeTresSeccionesConVariosElementos(){
 
         String contenido = "---\n# unTitulo\n---\n# unTitulo\n## unSubTitulo\n---\ni:imagen.png\n# unTitulo\n";
         AnalizadorDeContenido analizador = new AnalizadorDeContenido(contenido);
@@ -124,4 +138,47 @@ public class AnalizadorDeContenidoTest {
         Assert.assertEquals(entradaTerceraSeccion, elementosContenido.get(2).getEntrada());
 
     }
+
+    @Test
+    public void recibeDosSeccionesYVerificaTexto(){
+
+        String contenido = "---\n#UnTitulo\n---\nEsto es un texto\n";
+        AnalizadorDeContenido analizador = new AnalizadorDeContenido(contenido);
+        analizador.analizarContenido();
+        elementosContenido = analizador.obtenerContenidoAnalizado();
+
+        String entradaSegundaSeccion = "Esto es un texto\n";
+
+        Assert.assertEquals(entradaSegundaSeccion, elementosContenido.get(1).getEntrada());
+
+    }
+
+    @Test
+    public void recibeDosSeccionesYVerificaTextoLargo(){
+
+        String contenido = "---\n#UnTitulo\n---\nEsto es un texto\nEnVarias\nLineas\n";
+        AnalizadorDeContenido analizador = new AnalizadorDeContenido(contenido);
+        analizador.analizarContenido();
+        elementosContenido = analizador.obtenerContenidoAnalizado();
+
+        String entradaSegundaSeccion = "Esto es un texto\nEnVarias\nLineas\n";
+
+        Assert.assertEquals(entradaSegundaSeccion, elementosContenido.get(1).getEntrada());
+
+    }
+
+    @Test
+    public void recibeTresSeccionesYVerificaTextoLargoEnSegundaSeccion(){
+
+        String contenido = "---\n#UnTitulo\n---\nEsto es un texto\nEnVarias\nLineas\n---\ni:imagen.png\n";
+        AnalizadorDeContenido analizador = new AnalizadorDeContenido(contenido);
+        analizador.analizarContenido();
+        elementosContenido = analizador.obtenerContenidoAnalizado();
+
+        String entradaSegundaSeccion = "Esto es un texto\nEnVarias\nLineas\n";
+
+        Assert.assertEquals(entradaSegundaSeccion, elementosContenido.get(1).getEntrada());
+
+    }
+
 }

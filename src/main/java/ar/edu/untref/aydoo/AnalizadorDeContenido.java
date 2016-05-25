@@ -71,6 +71,10 @@ public class AnalizadorDeContenido {
                             unaSeccion.agregarElemento(unaLista);
                         }
                         break;
+                    default:
+                        Texto unTexto = new Texto(this.contenidoPorLineas.get(i));
+                        unaSeccion.agregarElemento(unTexto);
+                        break;
 
                 }
                 comienzoLineaAnterior = comienzoDeLinea;
