@@ -26,4 +26,35 @@ public class GestorDeArchivosTest {
 
 		Assert.assertEquals(true, fichero.exists());
 	}
+
+	@Test
+	public void testRenombrarCarpetaPlantillaAPlantilla1() throws IOException {
+		GestorDeArchivos gestor = new GestorDeArchivos();
+		gestor.renombrarArchivo("plantilla", "plantilla1");
+		
+		File fichero = new File("plantilla1");
+		
+		Assert.assertEquals(true, fichero.exists());
+	}
+	
+	@Test
+	public void testRenombrarCarpetaPlantilla1APlantilla2() throws IOException {
+		GestorDeArchivos gestor = new GestorDeArchivos();
+		gestor.renombrarArchivo("plantilla1", "plantilla2");
+		
+		File fichero = new File("plantilla2");
+		
+		Assert.assertEquals(true, fichero.exists());
+	}
+	
+	@Test
+	public void testRenombrarCarpetaPlantilla2APlantilla() throws IOException {
+		GestorDeArchivos gestor = new GestorDeArchivos();
+		gestor.renombrarArchivo("plantilla2", "plantilla");
+		
+		File fichero = new File("plantilla");
+		
+		Assert.assertEquals(true, fichero.exists());
+	}
+
 }

@@ -1,6 +1,9 @@
 package ar.edu.untref.aydoo;
 
 import java.io.File;
+import java.io.IOException;
+
+import org.apache.commons.io.FileUtils;
 
 public class GestorDeArchivos {
 
@@ -15,5 +18,7 @@ public class GestorDeArchivos {
 		}
 	}
 
-
+	public void copiarDirectorio(File origen, File destino) throws IOException {
+		FileUtils.copyDirectory(origen, destino);
+	}
 }
