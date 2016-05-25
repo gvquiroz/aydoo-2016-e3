@@ -70,8 +70,20 @@ public class GestorDeArchivosTest {
     @Test
     public void testLeerArchivo() throws FileNotFoundException, IOException{
     	File archivo = new File("mipresentacion1.md");
+    	GestorDeArchivos gestor = new GestorDeArchivos();
+    	gestor.leerArchivo(archivo);
+    }
+    
+    @Test
+    public void testBuscarYReemplazar() throws FileNotFoundException, IOException{
+    	File archivo = new File(System.getProperty("user.dir") + "/template/index.html");
     	GestorDeArchivos lector = new GestorDeArchivos();
-    	lector.leerArchivo(archivo);
+    	String nuevoTexto = "<section><h1>slide1 :titulo 1</h1></section>\n<section><h2>slide2: titulo 2</h2></section>\n<section>\nslide 3\n<h1>titulo 1</h1>\n<h2>titulo 2</h2>\n</section>";
+    	
+    	lector.buscarYReemplazarEnArchivo("[este-es-el-texto-a-reemplazar]", nuevoTexto, archivo);
+    	String resultado = lector.leerArchivo(archivo);
+    	
+    	Assert.assertEquals(false, resultado.contains("[este-es-el-texto-a-reemplazar]"));
     }
     
 
