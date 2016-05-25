@@ -12,7 +12,7 @@ public class LectorDeMarkdownTest {
     
     @Test
     public void leerArchivo() throws FileNotFoundException, IOException{
-    	String nombreDeArchivo = "mipresentacion1.md";
+    	String nombreDeArchivo = "template/mipresentacion1.md";
     	LectorDeMarkdown lector = new LectorDeMarkdown(nombreDeArchivo);
     	lector.leerArchivo(nombreDeArchivo);
     }

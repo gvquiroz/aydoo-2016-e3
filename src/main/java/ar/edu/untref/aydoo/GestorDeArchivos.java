@@ -13,11 +13,11 @@ import org.apache.commons.io.FileUtils;
 
 public class GestorDeArchivos {
 
-	public void renombrarArchivo(String antes, String despues) throws java.io.IOException {
-		File fichero = new File(antes);
-		File fichero2 = new File(despues);
+	public void renombrarArchivo(File antes, File despues) throws java.io.IOException {
+//		File fichero = new File(antes);
+//		File fichero2 = new File(despues);
 
-		boolean success = fichero.renameTo(fichero2);
+		boolean success = antes.renameTo(despues);
 		if (!success) {
 			System.out.println("Error intentando cambiar el nombre de fichero");
 		}
