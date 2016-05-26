@@ -18,4 +18,8 @@ public class ValidadorDeNombreTest {
     public void pasoUnNombreConEspacioEnBlanco(){
         ValidadorDeNombreDeArchivo miValidador = new ValidadorDeNombreDeArchivo("ma ana.md");
     }
+    @Test (expected = NombreDeArchivoIncorrectoException.class)
+    public void pasoUnNombreConBarraDesplazada(){
+        ValidadorDeNombreDeArchivo miValidador = new ValidadorDeNombreDeArchivo("ma/ana.md");
+    }
 }
