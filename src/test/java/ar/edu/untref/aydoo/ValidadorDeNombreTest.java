@@ -14,4 +14,8 @@ public class ValidadorDeNombreTest {
     public void pasoUnNombreConEnieMayuscula(){
         ValidadorDeNombreDeArchivo miValidador = new ValidadorDeNombreDeArchivo("maÑana.md");
     }
+    @Test (expected = NombreDeArchivoIncorrectoException.class)
+    public void pasoUnNombreConEspacioEnBlanco(){
+        ValidadorDeNombreDeArchivo miValidador = new ValidadorDeNombreDeArchivo("ma ana.md");
+    }
 }
