@@ -157,9 +157,8 @@ public class ProcesadorDeArgumentosTest {
         Assert.assertEquals("mipresentacion.md",resultado);
     }
 
-    @SuppressWarnings("unused")
     @Test (expected = NombreDeArchivoIncorrectoException.class)
-    public void miArchivoContieneUnaEnie() throws IOException {
+    public void miArchivoContieneUnaEnie()  {
         String args[] = {"mipresñentacion.md" , "--mode=no-output"};
 
         Opcion nombreDelArchivo = new Opcion();
@@ -182,9 +181,8 @@ public class ProcesadorDeArgumentosTest {
 
     }
 
-    @SuppressWarnings("unused")
     @Test (expected = NombreDeArchivoIncorrectoException.class)
-    public void miArchivoContieneUnaEnieMayuscula() throws IOException {
+    public void miArchivoContieneUnaEnieMayuscula() {
         String args[] = {"maÑana.md" , "--mode=no-output"};
         Opcion nombreDelArchivo = new Opcion();
         nombreDelArchivo.setNombreDelParametro("sin nombre");
