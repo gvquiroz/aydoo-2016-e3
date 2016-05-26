@@ -1,9 +1,7 @@
 package ar.edu.untref.aydoo;
 
-import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
 
 /**
@@ -11,22 +9,21 @@ import java.io.IOException;
  */
 public class LectorDeMarkdown {
 
-	private File archivoDeEntrada;
-
-	public LectorDeMarkdown(String nombreDeArchivo) {
-		this.archivoDeEntrada = new File(nombreDeArchivo);
-	}
-
-
-	public String leerArchivo(String archivo) throws FileNotFoundException, IOException {
-		String cadena = "";
-		String resultado = "";
-		FileReader file = new FileReader(archivo);
-		BufferedReader b = new BufferedReader(file);
-		while ((cadena = b.readLine()) != null) {
-			resultado = resultado + "\n" + cadena;
-		}
-		b.close();
-		return resultado;
+	public void lectorMarkDown(File archivo) throws FileNotFoundException, IOException {
+		/*
+		//TODO: Acá ponemos la magia.
+		GestorDeArchivos gestorDeArchivos = new GestorDeArchivos();
+		//leer archivos retorna el contenido del archivo markdown en un solo string resultado
+		String resultado = gestorDeArchivos.leerArchivo(archivo);
+		//Llamar al conversor html, pasarle resultado y que devuelva un string resultadoHTML.
+		//si la respuesta se espera por consola imprimir resultadoHTML
+		//si se espera por archivo llamar al gestor de archivos
+		File carpetaTemplate = new File("template");
+		//Reemplazar el string nombre recibido por parametro por el nombre recibido por consola
+		File nuevaCarpeta = new File("./target/NOMBRE RECIBIDO POR PARAMETRO");
+		File archivoIndexSalida = new File(System.getProperty("user.dir") + "/target/"+ "NOMBRE RECIBIDO POR PARAMETRO" + "/index.html");
+		gestorDeArchivos.copiarDirectorio(carpetaTemplate, nuevaCarpeta);
+		gestorDeArchivos.buscarYReemplazarEnArchivo("[este-es-el-texto-a-reemplazar]", "resultadoHTML", archivoIndexSalida);
+	*/
 	}
 }

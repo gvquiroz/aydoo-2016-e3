@@ -14,8 +14,6 @@ import org.apache.commons.io.FileUtils;
 public class GestorDeArchivos {
 
 	public void renombrarArchivo(File antes, File despues) throws java.io.IOException {
-//		File fichero = new File(antes);
-//		File fichero2 = new File(despues);
 
 		boolean success = antes.renameTo(despues);
 		if (!success) {

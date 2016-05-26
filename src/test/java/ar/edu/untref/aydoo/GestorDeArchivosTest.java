@@ -25,25 +25,23 @@ public class GestorDeArchivosTest {
 		GestorDeArchivos gestor = new GestorDeArchivos();
 		File entrada = new File(System.getProperty("user.dir") + "/template/archivo.cvs");
 		File salida = new File(System.getProperty("user.dir") + "/template/archivo.txt");
-		
+
 		gestor.renombrarArchivo(entrada, salida);
 
 		Assert.assertEquals(true, salida.exists());
 	}
 
-	 @Test
-	 public void testRenombrarCarpetaPlantillaAPlantilla1() throws IOException
-	 {
-	 GestorDeArchivos gestor = new GestorDeArchivos();
-	 File entrada = new File("template");
-	 File salida = new File("template1");
-	 gestor.renombrarArchivo(entrada, salida);
-	
-	 Assert.assertEquals(true, salida.exists());
-	 gestor.renombrarArchivo(salida, entrada);
-	 Assert.assertEquals(true, entrada.exists());
-	 }
-	
+	@Test
+	public void testRenombrarCarpetaPlantillaAPlantilla1() throws IOException {
+		GestorDeArchivos gestor = new GestorDeArchivos();
+		File entrada = new File("template");
+		File salida = new File("template1");
+		gestor.renombrarArchivo(entrada, salida);
+
+		Assert.assertEquals(true, salida.exists());
+		gestor.renombrarArchivo(salida, entrada);
+		Assert.assertEquals(true, entrada.exists());
+	}
 
 	@Test
 	public void testCopiarCarpeta() throws IOException {
