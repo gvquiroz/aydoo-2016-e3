@@ -10,4 +10,8 @@ public class ValidadorDeNombreTest {
     public void pasoUnNombreConEnie(){
         ValidadorDeNombreDeArchivo miValidador = new ValidadorDeNombreDeArchivo("mipresñentacion.md");
     }
+    @Test (expected = NombreDeArchivoIncorrectoException.class)
+    public void pasoUnNombreConEnieMayuscula(){
+        ValidadorDeNombreDeArchivo miValidador = new ValidadorDeNombreDeArchivo("maÑana.md");
+    }
 }
