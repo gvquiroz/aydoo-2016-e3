@@ -22,4 +22,8 @@ public class ValidadorDeNombreTest {
     public void pasoUnNombreConBarraDesplazada(){
         ValidadorDeNombreDeArchivo miValidador = new ValidadorDeNombreDeArchivo("ma/ana.md");
     }
+    @Test (expected = NombreDeArchivoIncorrectoException.class)
+    public void recibeNombreConAcento(){
+        ValidadorDeNombreDeArchivo miValidador = new ValidadorDeNombreDeArchivo("Camión.md");
+    }
 }
