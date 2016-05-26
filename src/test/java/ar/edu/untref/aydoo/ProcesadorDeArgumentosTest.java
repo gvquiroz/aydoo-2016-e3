@@ -268,47 +268,23 @@ public class ProcesadorDeArgumentosTest {
         ValidadorDeNombreDeArchivo validador = new ValidadorDeNombreDeArchivo(nombreDeArchivo);
     }
 
-//    @Test (expected = ArgumentoInvalidoException.class)
-//    public void recibeUnModoInvalido() {
-//        String args[] = {"Presentacion.md" , "--mode=gaby"};
-//        Opcion nombreDelArchivo = new Opcion();
-//        nombreDelArchivo.setNombreDelParametro("sin nombre");
-//        Opcion modo = new Opcion();
-//        modo.setNombreDelParametro("--mode");
-//        String valores[] = {"default","no-output"};
-//        modo.setValoresAdmitidos(valores);
-//        modo.setValorDefault("default");
-//
-//        List<Opcion> listaDeOpciones = new LinkedList<>();
-//        listaDeOpciones.add(modo);
-//        listaDeOpciones.add(nombreDelArchivo);
-//
-//        ProcesadorDeArgumentos interfaz = new ProcesadorDeArgumentos(args,listaDeOpciones);
-//        String nombreDeArchivo = interfaz.getContenido("--mode");
-//    }
+    @Test (expected = ArgumentoInvalidoException.class)
+    public void recibeUnModoInvalido() {
+        String args[] = {"Presentacion.md" , "--mode=gaby"};
+        Opcion nombreDelArchivo = new Opcion();
+        nombreDelArchivo.setNombreDelParametro("sin nombre");
+        Opcion modo = new Opcion();
+        modo.setNombreDelParametro("--mode");
+        String valores[] = {"default","no-output"};
+        modo.setValoresAdmitidos(valores);
+        modo.setValorDefault("default");
 
-    @Test
-    public void preguntoNombreDeCarpetaCuandoReciboNombreDeArchivoConExtensionMd(){
-        String args[] = {"mi_presentacion.md"};
-        GestorDeEntrada interfaz = new GestorDeEntrada(args);
-        String resultado = interfaz.getNombreDeCarpetaDeSalida();
+        List<Opcion> listaDeOpciones = new LinkedList<>();
+        listaDeOpciones.add(modo);
+        listaDeOpciones.add(nombreDelArchivo);
 
-        Assert.assertEquals("mi_presentacion", resultado);
+        ProcesadorDeArgumentos interfaz = new ProcesadorDeArgumentos(args,listaDeOpciones);
+        String nombreDeArchivo = interfaz.getContenido("--mode");
     }
-    @Test
-    public void preguntoNombreDeCarpetaCuandoReciboNombreDeArchivoSinExtension(){
-        String args[] = {"Presentacion"};
-        GestorDeEntrada interfaz = new GestorDeEntrada(args);
-        String resultado = interfaz.getNombreDeCarpetaDeSalida();
 
-        Assert.assertEquals("Presentacion", resultado);
-    }
-    @Test
-    public void pidoNombreDeCarpetaCuandoReciboNombreConDosPuntosYExtension(){
-        String args[] = {"mi.presentacion.md"};
-        GestorDeEntrada interfaz = new GestorDeEntrada(args);
-        String resultado = interfaz.getNombreDeCarpetaDeSalida();
-
-        Assert.assertEquals("mi.presentacion", resultado);
-    }
 }
