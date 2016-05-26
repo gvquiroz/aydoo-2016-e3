@@ -32,7 +32,7 @@ public class Opcion {
         this.contenidoDelParametro = contenidoDelParametro;
     }
 
-    public void setAdmiteCualquierValor(boolean admite){
+    private void setAdmiteCualquierValor(boolean admite){
         this.admiteCualquierValor = admite;
     }
 

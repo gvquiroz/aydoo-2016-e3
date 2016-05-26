@@ -15,4 +15,13 @@ public class OpcionTest {
 
         Assert.assertEquals("default", modo.getContenidoDelParametro());
     }
+    @Test (expected = ArgumentoInvalidoException.class)
+    public void seteaValoresPermitidosYRecibeValoresErroneos(){
+        Opcion modo = new Opcion();
+        modo.setNombreDelParametro("--mode");
+        String valores[] = {"default","no-output"};
+        modo.setValoresAdmitidos(valores);
+        modo.setValorDefault("default");
+        modo.setContenidoDelParametro("Casa");
+    }
 }
