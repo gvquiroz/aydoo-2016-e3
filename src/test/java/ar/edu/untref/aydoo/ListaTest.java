@@ -30,7 +30,7 @@ public class ListaTest {
         Lista unaLista = new Lista("*2 papas\n");
         String listaSalida = unaLista.getSalida();
 
-        Assert.assertEquals("<ul>\n<li>2 papas</li>\n</ul>\n", listaSalida);
+        Assert.assertEquals("<ul>\n<li>2 papas</li>\n</ul>", listaSalida);
     }
 
 
@@ -42,7 +42,7 @@ public class ListaTest {
         unaLista.agregarItem("*4 cebollas\n");
         String listaSalida = unaLista.getSalida();
 
-        Assert.assertEquals("<ul>\n<li>2 papas</li>\n<li>4 cebollas</li>\n</ul>\n", listaSalida);
+        Assert.assertEquals("<ul>\n<li>2 papas</li>\n<li>4 cebollas</li>\n</ul>", listaSalida);
     }
 
     @Test
@@ -53,6 +53,6 @@ public class ListaTest {
         unaLista.agregarItem("*2 choclos\n");
         String listaSalida = unaLista.getSalida();
 
-        Assert.assertEquals("<ul>\n<li>2 papas</li>\n<li>4 cebollas</li>\n<li>2 choclos</li>\n</ul>\n", listaSalida);
+        Assert.assertEquals("<ul>\n<li>2 papas</li>\n<li>4 cebollas</li>\n<li>2 choclos</li>\n</ul>", listaSalida);
     }
 }

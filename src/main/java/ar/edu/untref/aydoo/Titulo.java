@@ -13,8 +13,7 @@ public class Titulo extends Elemento {
         //<h1>un titulo</h1>
 
         String entrada = this.getEntrada();
-        int barraN = entrada.indexOf("\n");
-        String tituloLimpio = entrada.substring(2, barraN);
+        String tituloLimpio = entrada.substring(2, entrada.length()-1);
         String salida;
         salida = "<h1>"+tituloLimpio+"</h1>";
 

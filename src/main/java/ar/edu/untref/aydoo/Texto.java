@@ -7,7 +7,9 @@ public class Texto extends Elemento {
 	}
 
 	public String getSalida(){
-		return getEntrada();
+		String textoLimpio = getEntrada().substring(0, getEntrada().length()-1);
+
+		return textoLimpio;
 	}
 	
 }

@@ -21,16 +21,16 @@ public class Lista extends Elemento{
         String entrada = this.getEntrada();
         String [] listaDeItems = entrada.split("\\*");
         String lista = "";
+        String itemLimpio;
 
         for(int i = 1; i < listaDeItems.length; i++){
 
-            int barraN = listaDeItems[i].indexOf("\n");
-            String itemLimpio = listaDeItems[i].substring(0, barraN);
+            itemLimpio = listaDeItems[i].substring(0, listaDeItems[i].length()-1);
             lista = lista.concat("<li>" + itemLimpio + "</li>" + "\n");
         }
 
         String salida;
-        salida = "<ul>" + "\n" + lista + "</ul>\n";
+        salida = "<ul>" + "\n" + lista + "</ul>";
         return salida;
     }
 

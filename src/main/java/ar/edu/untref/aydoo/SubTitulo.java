@@ -13,8 +13,7 @@ public class SubTitulo extends Elemento{
         //<h2>un subtitulo</h2>
 
         String entrada = this.getEntrada();
-        int barraN = entrada.indexOf("\n");
-        String subTituloLimpio = entrada.substring(3,barraN);
+        String subTituloLimpio = entrada.substring(3,entrada.length()-1);
         String salida;
         salida = "<h2>"+subTituloLimpio+"</h2>";
 

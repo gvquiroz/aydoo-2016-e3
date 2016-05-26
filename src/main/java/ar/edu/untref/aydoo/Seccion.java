@@ -19,7 +19,7 @@ public class Seccion extends Elemento {
 			resultado =  resultado + elementoActual.getSalida() + "\n";
 		}
 
-		return "<section>" + "\n" + resultado + "</section>";
+		return "<section>" + "\n" + resultado + "</section>"+ "\n";
 	}
 
 	public void agregarElemento(Elemento unElemento) {
