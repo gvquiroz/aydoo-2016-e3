@@ -26,7 +26,7 @@ public class SeccionTest {
 	@Test
 	public void seccionConTextoPlano() {
 		Seccion unaSeccion = new Seccion("");
-		Texto texto = new Texto("texto libre");
+		Texto texto = new Texto("texto libre\n");
 
 		unaSeccion.agregarElemento(texto);
 
