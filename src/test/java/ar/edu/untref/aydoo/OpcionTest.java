@@ -24,4 +24,13 @@ public class OpcionTest {
         modo.setValorDefault("default");
         modo.setContenidoDelParametro("Casa");
     }
+    @Test
+    public void seteaValoresPermitidosYRecibeValoresPermitidos(){
+        Opcion modo = new Opcion();
+        modo.setNombreDelParametro("--mode");
+        String valores[] = {"default","no-output"};
+        modo.setValoresAdmitidos(valores);
+        modo.setValorDefault("default");
+        modo.setContenidoDelParametro("default");
+    }
 }
