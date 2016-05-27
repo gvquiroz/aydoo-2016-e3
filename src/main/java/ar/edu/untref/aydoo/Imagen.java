@@ -5,7 +5,7 @@ public class Imagen extends Elemento {
 
     public Imagen(String imagen) {
 
-        this.setEntrada(imagen);
+        super(imagen);
 
     }
 

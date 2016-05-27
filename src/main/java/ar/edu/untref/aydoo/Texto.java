@@ -3,7 +3,7 @@ package ar.edu.untref.aydoo;
 public class Texto extends Elemento {
 
 	public Texto(String texto) {
-		this.setEntrada(texto);
+		super(texto);
 	}
 
 	public String getSalida(){

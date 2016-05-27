@@ -4,7 +4,7 @@ public class SubTitulo extends Elemento{
 
     public SubTitulo(String subTitulo) {
 
-        this.setEntrada(subTitulo);
+        super(subTitulo);
 
     }
 

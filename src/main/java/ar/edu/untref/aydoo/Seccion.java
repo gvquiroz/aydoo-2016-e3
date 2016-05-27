@@ -8,7 +8,7 @@ public class Seccion extends Elemento {
 	private List<Elemento> elementos;
 
 	public Seccion(String contenidoSeccion) {
-		this.setEntrada(contenidoSeccion);
+		super(contenidoSeccion);
 		this.elementos = new LinkedList<Elemento>();
 	}
 

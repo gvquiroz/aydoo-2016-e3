@@ -4,7 +4,7 @@ public class Titulo extends Elemento {
 
     public Titulo(String titulo) {
 
-        this.setEntrada(titulo);
+        super(titulo);
 
     }
 

@@ -5,10 +5,8 @@ import java.util.List;
 
 public class Lista extends Elemento{
 
-    public Lista(String item) {
-
-        this.setEntrada(item);
-
+    public Lista(String contenido) {
+        super(contenido);
     }
 
     public String getSalida() {
@@ -36,6 +34,6 @@ public class Lista extends Elemento{
 
     public void agregarItem(String unItem) {
 
-        this.setEntrada(this.getEntrada().concat(unItem));
+        super.setEntrada(this.getEntrada().concat(unItem));
     }
 }
