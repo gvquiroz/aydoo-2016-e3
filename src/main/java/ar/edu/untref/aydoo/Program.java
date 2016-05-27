@@ -9,23 +9,14 @@ import java.util.List;
 public class Program {
 
 	public static void main(String[] args) throws FileNotFoundException, IOException {
-		Opcion nombreDelArchivo = new Opcion();
-		nombreDelArchivo.setNombreDelParametro("sin nombre");
-		Opcion modo = new Opcion();
-		modo.setNombreDelParametro("--mode");
-		String valores[] = { "default", "no-output" };
-		modo.setValoresAdmitidos(valores);
-		modo.setValorDefault("default");
 
-		List<Opcion> listaDeOpciones = new LinkedList<>();
-		listaDeOpciones.add(modo);
-		listaDeOpciones.add(nombreDelArchivo);
+		GestorDeArgumentos gestorDeEntrada = new GestorDeArgumentos(args);
 
-		ProcesadorDeArgumentos miProcesador = new ProcesadorDeArgumentos(args, listaDeOpciones);
-		String modoContenido = miProcesador.getContenido("--mode");
 
-		String nombreDeArchivo = miProcesador.getContenido("sin nombre");
-		ValidadorDeNombreDeArchivo validadorDeNombre = new ValidadorDeNombreDeArchivo(nombreDeArchivo);
+		String modoContenido = gestorDeEntrada.getContenidoDeModo();
+		String nombreDeArchivo = gestorDeEntrada.getNombreDeArchivo();
+		String contenidoDelParametroOutput = gestorDeEntrada.getContenidoDeOutput();
+		String nombreDeCarpeta = gestorDeEntrada.getNombreDeCarpeta();
 
 		GestorDeArchivos gestor = new GestorDeArchivos();
 		File archivo = new File(System.getProperty("user.dir") + "/template/" + nombreDeArchivo);
@@ -39,10 +30,6 @@ public class Program {
 
 		File origen = new File("template");
 
-		String nombreDeCarpeta = nombreDeArchivo;
-		if (nombreDeArchivo.contains(".md")) {
-			nombreDeCarpeta = nombreDeArchivo.split(".md")[0];
-		}
 		File destino = new File("./target/" + nombreDeCarpeta);
 		gestor.copiarDirectorio(origen, destino);
 		

@@ -13,6 +13,7 @@ public class LectorDeMarkdown {
 		/*
 		//TODO: Acá ponemos la magia.
 
+
 		//Creamos las opciones validas, me falta liquidar el builder de opciones y se las pasamos al procesadorDeArgumentos
 		ProcesadorDeArgumentos miProcesador = new ProcesadorDeArgumentos(argumentos,opcionesValidas);
 
@@ -35,5 +36,6 @@ public class LectorDeMarkdown {
 		gestorDeArchivos.copiarDirectorio(carpetaTemplate, nuevaCarpeta);
 		gestorDeArchivos.buscarYReemplazarEnArchivo("[este-es-el-texto-a-reemplazar]", "resultadoHTML", archivoIndexSalida);
 	*/
+
 	}
 }

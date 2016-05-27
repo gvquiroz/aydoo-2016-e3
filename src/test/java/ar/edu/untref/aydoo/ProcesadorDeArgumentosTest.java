@@ -145,13 +145,15 @@ public class ProcesadorDeArgumentosTest {
         String valores[] = {"default","no-output"};
         modo.setValoresAdmitidos(valores);
         modo.setValorDefault("default");
-
+        Opcion output = new Opcion();
+        output.setNombreDelParametro("--output");
         List<Opcion> listaDeOpciones = new LinkedList<>();
+        listaDeOpciones.add(output);
         listaDeOpciones.add(modo);
         listaDeOpciones.add(nombreDelArchivo);
 
         ProcesadorDeArgumentos interfaz = new ProcesadorDeArgumentos(args,listaDeOpciones);
-
+        System.out.println(interfaz.getContenido("--output"));
         String resultado = interfaz.getContenido("sin nombre");
 
         Assert.assertEquals("mipresentacion.md",resultado);
