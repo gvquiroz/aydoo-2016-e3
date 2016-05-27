@@ -38,6 +38,9 @@ public class GestorDeArchivos {
 		FileReader file = new FileReader(archivo);
 		BufferedReader b = new BufferedReader(file);
 		while ((cadena = b.readLine()) != null) {
+			if(resultado.equals("")){
+				resultado = cadena;
+			}
 			resultado = resultado + "\n" + cadena;
 		}
 		b.close();
