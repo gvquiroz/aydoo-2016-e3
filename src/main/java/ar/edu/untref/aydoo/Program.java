@@ -11,8 +11,6 @@ public class Program {
 	public static void main(String[] args) throws FileNotFoundException, IOException {
 
 		GestorDeArgumentos gestorDeEntrada = new GestorDeArgumentos(args);
-
-
 		String modoContenido = gestorDeEntrada.getContenidoDeModo();
 		String nombreDeArchivo = gestorDeEntrada.getNombreDeArchivo();
 		String contenidoDelParametroOutput = gestorDeEntrada.getContenidoDeOutput();
