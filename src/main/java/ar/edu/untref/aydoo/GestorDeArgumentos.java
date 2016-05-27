@@ -45,12 +45,13 @@ public class GestorDeArgumentos {
     public String getNombreDeCarpeta(){
 
         String nombreDeCarpeta = this.getNombreDeArchivo();
+
         if (this.getContenidoDeOutput() != null){
             nombreDeCarpeta = this.getContenidoDeOutput();
         }
 
-        if (this.getNombreDeArchivo().contains(".md")) {
-            nombreDeCarpeta = this.getNombreDeArchivo().split(".md")[0];
+        if (nombreDeCarpeta.contains(".md")) {
+            nombreDeCarpeta =nombreDeCarpeta.split(".md")[0];
         }
         return nombreDeCarpeta;
     }
