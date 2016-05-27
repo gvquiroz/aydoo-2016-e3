@@ -13,7 +13,6 @@ public class Program {
 		GestorDeArgumentos gestorDeEntrada = new GestorDeArgumentos(args);
 		String modoContenido = gestorDeEntrada.getContenidoDeModo();
 		String nombreDeArchivo = gestorDeEntrada.getNombreDeArchivo();
-		String contenidoDelParametroOutput = gestorDeEntrada.getContenidoDeOutput();
 		String nombreDeCarpeta = gestorDeEntrada.getNombreDeCarpeta();
 
 		GestorDeArchivos gestor = new GestorDeArchivos();
