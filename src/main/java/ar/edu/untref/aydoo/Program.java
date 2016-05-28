@@ -14,7 +14,7 @@ public class Program {
 		String nombreDeCarpeta = gestorDeEntrada.getNombreDeCarpeta();
 
 		GestorDeArchivos gestor = new GestorDeArchivos();
-		File archivo = new File(System.getProperty("user.dir") + "/template/" + nombreDeArchivo);
+		File archivo = new File(System.getProperty("user.dir") + "/" + nombreDeArchivo);
 		String cadenaMarkdown = gestor.leerArchivo(archivo);
 
 		AnalizadorDeContenido analizadorDeContenido = new AnalizadorDeContenido(cadenaMarkdown);

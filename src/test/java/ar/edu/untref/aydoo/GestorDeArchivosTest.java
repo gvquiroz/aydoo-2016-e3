@@ -54,7 +54,7 @@ public class GestorDeArchivosTest {
 
 	@Test
 	public void testLeerArchivo() throws FileNotFoundException, IOException {
-		File archivo = new File(System.getProperty("user.dir") + "/template/mipresentacion1.md");
+		File archivo = new File(System.getProperty("user.dir") + "/mipresentacion1.md");
 		GestorDeArchivos gestor = new GestorDeArchivos();
 		gestor.leerArchivo(archivo);
 
