@@ -3,8 +3,6 @@ package ar.edu.untref.aydoo;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.LinkedList;
-import java.util.List;
 
 public class Program {
 
@@ -22,6 +20,7 @@ public class Program {
 		AnalizadorDeContenido analizadorDeContenido = new AnalizadorDeContenido(cadenaMarkdown);
 		analizadorDeContenido.analizarContenido();
 
+		@SuppressWarnings("unchecked")
 		Conversor conversorHTML = new Conversor(analizadorDeContenido.obtenerContenidoAnalizado());
 		String cadenaHTML = conversorHTML.getConversion();
 

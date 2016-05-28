@@ -11,7 +11,8 @@ public class AnalizadorDeContenidoTest {
 
     private List<Elemento> elementosContenido = new LinkedList<Elemento>();
 
-    @Test
+    @SuppressWarnings("unchecked")
+	@Test
     public void recibeTitulo(){
 
         String contenido = "---\n# unTitulo\n";
@@ -25,7 +26,8 @@ public class AnalizadorDeContenidoTest {
 
     }
 
-    @Test
+    @SuppressWarnings("unchecked")
+	@Test
     public void recibeSubtitulo(){
 
         String contenido = "---\n## unSubTitulo\n";
@@ -39,7 +41,8 @@ public class AnalizadorDeContenidoTest {
 
     }
 
-    @Test
+    @SuppressWarnings("unchecked")
+	@Test
     public void recibeImagen(){
 
         String contenido = "---\ni:imagen.png\n";
@@ -53,7 +56,8 @@ public class AnalizadorDeContenidoTest {
 
     }
 
-    @Test
+    @SuppressWarnings("unchecked")
+	@Test
     public void recibeTexto(){
 
         String contenido = "---\nEsto es un texto\n";
@@ -67,7 +71,8 @@ public class AnalizadorDeContenidoTest {
 
     }
 
-    @Test
+    @SuppressWarnings("unchecked")
+	@Test
     public void recibeLista(){
 
         String contenido = "---\n*unItem\n";
@@ -81,7 +86,8 @@ public class AnalizadorDeContenidoTest {
 
     }
 
-    @Test
+    @SuppressWarnings("unchecked")
+	@Test
     public void recibeListaConVariosItems(){
 
         String contenido = "---\n*unItem\n*otroItem\n*tercerItem\n";
@@ -95,7 +101,8 @@ public class AnalizadorDeContenidoTest {
 
     }
 
-    @Test
+    @SuppressWarnings("unchecked")
+	@Test
     public void recibeDosSeccionesUnaConTituloYOtraConTituloYSubtituloVerificaPrimeraSeccion(){
 
         String contenido = "---\n# unTitulo\n---\n# unTitulo\n## unSubTitulo\n";
@@ -110,7 +117,8 @@ public class AnalizadorDeContenidoTest {
 
     }
 
-    @Test
+    @SuppressWarnings("unchecked")
+	@Test
     public void recibeDosSeccionesUnaConTituloYOtraConTituloYSubtituloVerificaSegundaSeccion(){
 
         String contenido = "---\n# unTitulo\n---\n# unTitulo\n## unSubTitulo\n";
@@ -125,7 +133,8 @@ public class AnalizadorDeContenidoTest {
 
     }
 
-    @Test
+    @SuppressWarnings("unchecked")
+	@Test
     public void recibeTresSeccionesConVariosElementos(){
 
         String contenido = "---\n# unTitulo\n---\n# unTitulo\n## unSubTitulo\n---\ni:imagen.png\n# unTitulo\n";
@@ -139,7 +148,8 @@ public class AnalizadorDeContenidoTest {
 
     }
 
-    @Test
+    @SuppressWarnings("unchecked")
+	@Test
     public void recibeDosSeccionesYVerificaTexto(){
 
         String contenido = "---\n#UnTitulo\n---\nEsto es un texto\n";
@@ -153,7 +163,8 @@ public class AnalizadorDeContenidoTest {
 
     }
 
-    @Test
+    @SuppressWarnings("unchecked")
+	@Test
     public void recibeDosSeccionesYVerificaTextoLargo(){
 
         String contenido = "---\n#UnTitulo\n---\nEsto es un texto\nEnVarias\nLineas\n";
@@ -167,7 +178,8 @@ public class AnalizadorDeContenidoTest {
 
     }
 
-    @Test
+    @SuppressWarnings("unchecked")
+	@Test
     public void recibeTresSeccionesYVerificaTextoLargoEnSegundaSeccion(){
 
         String contenido = "---\n#UnTitulo\n---\nEsto es un texto\nEnVarias\nLineas\n---\ni:imagen.png\n";

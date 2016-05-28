@@ -30,7 +30,8 @@ public class GestorDeArgumentos {
 
     public String getNombreDeArchivo(){
         String nombreDelArchivo = this.miProcesador.getContenido("sin nombre");
-        ValidadorDeNombreDeArchivo validadorDeNombre = new ValidadorDeNombreDeArchivo(nombreDelArchivo);
+        @SuppressWarnings("unused")
+		ValidadorDeNombreDeArchivo validadorDeNombre = new ValidadorDeNombreDeArchivo(nombreDelArchivo);
         return nombreDelArchivo;
     }
 

@@ -1,8 +1,5 @@
 package ar.edu.untref.aydoo;
 
-import java.util.LinkedList;
-import java.util.List;
-
 public class Lista extends Elemento{
 
     public Lista(String contenido) {
