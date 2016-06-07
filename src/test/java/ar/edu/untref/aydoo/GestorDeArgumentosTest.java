@@ -16,9 +16,16 @@ public class GestorDeArgumentosTest {
 
     @Test
     public void miGestorRecibeNombreDeArchivoYArgumentoOutputPorLoQueElNombreDeCarpetEsOtro() {
-        String args[] = {"mipresentacion.md", "--output=presentacion1"};
+        String args[] = {"mipresentacion.md", "--output=a"};
         GestorDeArgumentos miGestor = new GestorDeArgumentos(args);
         String resultado = miGestor.getNombreDeCarpeta();
-        Assert.assertEquals("presentacion1",resultado);
+        Assert.assertEquals("a",resultado);
+    }
+    @Test
+    public void a() {
+        String args[] = {"a", "--mode=no-output"};
+        GestorDeArgumentos miGestor = new GestorDeArgumentos(args);
+        String resultado = miGestor.getNombreDeArchivo();
+        Assert.assertEquals("a",resultado);
     }
 }

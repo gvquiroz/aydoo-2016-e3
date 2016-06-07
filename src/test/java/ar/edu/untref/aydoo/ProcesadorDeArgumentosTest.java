@@ -158,7 +158,6 @@ public class ProcesadorDeArgumentosTest {
 		listaDeOpciones.add(nombreDelArchivo);
 
 		ProcesadorDeArgumentos interfaz = new ProcesadorDeArgumentos(args, listaDeOpciones);
-		System.out.println(interfaz.getContenido("--output"));
 		String resultado = interfaz.getContenido("sin nombre");
 
 		Assert.assertEquals("mipresentacion.md", resultado);
