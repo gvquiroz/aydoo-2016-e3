@@ -12,9 +12,12 @@ public class Program {
 		String modoContenido = gestorDeEntrada.getContenidoDeModo();
 		String nombreDeArchivo = gestorDeEntrada.getNombreDeArchivo();
 		String nombreDeCarpeta = gestorDeEntrada.getNombreDeCarpeta();
+		File jar = new File(System.getProperty("java.class.path"));
+		File direccionJar = jar.getAbsoluteFile().getParentFile();
+		String ubicacionJar = direccionJar.toString();
 
 		GestorDeArchivos gestor = new GestorDeArchivos();
-		File archivo = new File(System.getProperty("user.dir") + "/" + nombreDeArchivo);
+		File archivo = new File(ubicacionJar + "/" + nombreDeArchivo);
 		String cadenaMarkdown = gestor.leerArchivo(archivo);
 
 		AnalizadorDeContenido analizadorDeContenido = new AnalizadorDeContenido(cadenaMarkdown);
@@ -24,13 +27,13 @@ public class Program {
 		Conversor conversorHTML = new Conversor(analizadorDeContenido.obtenerContenidoAnalizado());
 		String cadenaHTML = conversorHTML.getConversion();
 
-		File origen = new File("template");
+		File origen = new File(ubicacionJar + "/template");
 
-		File destino = new File("./target/" + nombreDeCarpeta);
+		File destino = new File(ubicacionJar + "/" + nombreDeCarpeta);
 		gestor.copiarDirectorio(origen, destino);
 		
 		if (modoContenido.equals("default")) {
-			File archivoIndex = new File(System.getProperty("user.dir") + "/target/"+ nombreDeCarpeta +"/index.html");
+			File archivoIndex = new File(ubicacionJar + "/"+ nombreDeCarpeta +"/index.html");
 			gestor.buscarYReemplazarEnArchivo("[este-es-el-texto-a-reemplazar]", cadenaHTML, archivoIndex);
 		} else if (modoContenido.equals("no-output")) {
 			System.out.println(cadenaHTML);

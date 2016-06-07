@@ -12,8 +12,8 @@ public class GestorDeArchivosTest {
 	@Test
 	public void testRenombrarArchivoTxtACvs() throws IOException {
 		GestorDeArchivos gestor = new GestorDeArchivos();
-		File entrada = new File(System.getProperty("user.dir") + "/template/archivo.txt");
-		File salida = new File(System.getProperty("user.dir") + "/template/archivo.cvs");
+		File entrada = new File(System.getProperty("user.dir") + "/target/test-classes/template/archivo.txt");
+		File salida = new File(System.getProperty("user.dir") + "/target/test-classes/template/archivo.cvs");
 
 		gestor.renombrarArchivo(entrada, salida);
 
@@ -23,8 +23,8 @@ public class GestorDeArchivosTest {
 	@Test
 	public void testRenombrarArchivoCvsATxt() throws IOException {
 		GestorDeArchivos gestor = new GestorDeArchivos();
-		File entrada = new File(System.getProperty("user.dir") + "/template/archivo.cvs");
-		File salida = new File(System.getProperty("user.dir") + "/template/archivo.txt");
+		File entrada = new File(System.getProperty("user.dir") + "/target/test-classes/template/archivo.cvs");
+		File salida = new File(System.getProperty("user.dir") + "/target/test-classes/template/archivo.txt");
 
 		gestor.renombrarArchivo(entrada, salida);
 
@@ -34,8 +34,8 @@ public class GestorDeArchivosTest {
 	@Test
 	public void testRenombrarCarpetaPlantillaAPlantilla1() throws IOException {
 		GestorDeArchivos gestor = new GestorDeArchivos();
-		File entrada = new File("template");
-		File salida = new File("template1");
+		File entrada = new File("./target/test-classes/template");
+		File salida = new File("./target/test-classes/template1");
 		gestor.renombrarArchivo(entrada, salida);
 
 		Assert.assertEquals(true, salida.exists());
@@ -46,7 +46,7 @@ public class GestorDeArchivosTest {
 	@Test
 	public void testCopiarCarpeta() throws IOException {
 		GestorDeArchivos gestor = new GestorDeArchivos();
-		File origen = new File("template");
+		File origen = new File("./target/test-classes/template");
 		File destino = new File("./target/plantillaCopia");
 		gestor.copiarDirectorio(origen, destino);
 
@@ -54,7 +54,7 @@ public class GestorDeArchivosTest {
 
 	@Test
 	public void testLeerArchivo() throws FileNotFoundException, IOException {
-		File archivo = new File(System.getProperty("user.dir") + "/mipresentacion1.md");
+		File archivo = new File(System.getProperty("user.dir") + "/target/test-classes/mipresentacion1.md");
 		GestorDeArchivos gestor = new GestorDeArchivos();
 		gestor.leerArchivo(archivo);
 
@@ -62,7 +62,7 @@ public class GestorDeArchivosTest {
 
 	@Test
 	public void testBuscarYReemplazarVolviendoAVersionOriginal() throws FileNotFoundException, IOException {
-		File archivo = new File(System.getProperty("user.dir") + "/template/index.html");
+		File archivo = new File(System.getProperty("user.dir") + "/target/test-classes/template/index.html");
 		GestorDeArchivos lector = new GestorDeArchivos();
 		String nuevoTexto = "[este-es-el-texto-a-reemplazar]";
 
@@ -76,7 +76,7 @@ public class GestorDeArchivosTest {
 
 	@Test
 	public void testBuscarYReemplazar() throws FileNotFoundException, IOException {
-		File archivo = new File(System.getProperty("user.dir") + "/template/index.html");
+		File archivo = new File(System.getProperty("user.dir") + "/target/test-classes/template/index.html");
 		GestorDeArchivos lector = new GestorDeArchivos();
 		String nuevoTexto = "<section><h1>slide1 :titulo 1</h1></section>\n<section><h2>slide2: titulo 2</h2></section>\n<section>\nslide 3\n<h1>titulo 1</h1>\n<h2>titulo 2</h2>\n</section>";
 
