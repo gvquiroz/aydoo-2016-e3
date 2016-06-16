@@ -27,7 +27,7 @@ public class Program {
 		Conversor conversorHTML = new Conversor(analizadorDeContenido.obtenerContenidoAnalizado());
 		String cadenaHTML = conversorHTML.getConversion();
 
-		File origen = new File(ubicacionJar + "/template");
+		File origen = new File(ubicacionJar + "/plantilla");
 
 		File destino = new File(ubicacionJar + "/" + nombreDeCarpeta);
 		gestor.copiarDirectorio(origen, destino);
