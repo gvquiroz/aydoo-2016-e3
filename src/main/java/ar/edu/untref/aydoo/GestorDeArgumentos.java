@@ -2,6 +2,7 @@ package ar.edu.untref.aydoo;
 
 import java.util.LinkedList;
 import java.util.List;
+import java.util.regex.Pattern;
 
 /**
  * Created by Velonter on 5/27/2016.
@@ -11,12 +12,12 @@ public class GestorDeArgumentos {
 
     private ProcesadorDeArgumentos miProcesador;
 
-    public GestorDeArgumentos(String[] args){
+    public GestorDeArgumentos(String[] args) {
         Opcion nombreDelArchivo = new Opcion();
-        nombreDelArchivo.setNombreDelParametro("sin nombre");
+        nombreDelArchivo.setNombreDelParametro("parametroVacio");
         Opcion modo = new Opcion();
         modo.setNombreDelParametro("--mode");
-        String valores[] = { "default", "no-output" };
+        String valores[] = {"default", "no-output"};
         modo.setValoresAdmitidos(valores);
         modo.setValorDefault("default");
         Opcion output = new Opcion();
@@ -28,31 +29,35 @@ public class GestorDeArgumentos {
         this.miProcesador = new ProcesadorDeArgumentos(args, listaDeOpciones);
     }
 
-    public String getNombreDeArchivo(){
-        String nombreDelArchivo = this.miProcesador.getContenido("sin nombre");
-        @SuppressWarnings("unused")
-		ValidadorDeNombreDeArchivo validadorDeNombre = new ValidadorDeNombreDeArchivo(nombreDelArchivo);
+    public String getNombreDeArchivo() {
+        String nombreDelArchivo = this.miProcesador.getContenido("parametroVacio");
+        if (    nombreDelArchivo.toLowerCase().contains("ñ") ||
+                nombreDelArchivo.contains(" ") ||
+                nombreDelArchivo.contains("/") ||
+                Pattern.matches(".*[áàäéèëíìïóòöúùuñÁÀÄÉÈËÍÌÏÓÒÖÚÙÜ].*", nombreDelArchivo)) {
+            throw new NombreDeArchivoIncorrectoException();
+        }
         return nombreDelArchivo;
     }
 
-    public String getContenidoDeModo(){
+    public String getContenidoDeModo() {
         return this.miProcesador.getContenido("--mode");
     }
 
-    public String getContenidoDeOutput(){
+    public String getContenidoDeOutput() {
         return this.miProcesador.getContenido("--output");
     }
 
-    public String getNombreDeCarpeta(){
+    public String getNombreDeCarpeta() {
 
         String nombreDeCarpeta = this.getNombreDeArchivo();
 
-        if (this.getContenidoDeOutput() != null){
+        if (this.getContenidoDeOutput() != null) {
             nombreDeCarpeta = this.getContenidoDeOutput();
         }
 
         if (nombreDeCarpeta.contains(".md")) {
-            nombreDeCarpeta =nombreDeCarpeta.split(".md")[0];
+            nombreDeCarpeta = nombreDeCarpeta.split(".md")[0];
         }
         return nombreDeCarpeta;
     }

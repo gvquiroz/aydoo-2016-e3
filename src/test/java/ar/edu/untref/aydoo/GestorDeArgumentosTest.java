@@ -21,11 +21,39 @@ public class GestorDeArgumentosTest {
         String resultado = miGestor.getNombreDeCarpeta();
         Assert.assertEquals("a",resultado);
     }
-    @Test
-    public void a() {
-        String args[] = {"a", "--mode=no-output"};
+
+    @Test(expected = NombreDeArchivoIncorrectoException.class)
+    public void pasoUnNombreConEnie() {
+        String args[] = {"mipresñentacion.md", "--mode=no-output"};
         GestorDeArgumentos miGestor = new GestorDeArgumentos(args);
-        String resultado = miGestor.getNombreDeArchivo();
-        Assert.assertEquals("a",resultado);
+        miGestor.getNombreDeArchivo();
+    }
+
+   @Test(expected = NombreDeArchivoIncorrectoException.class)
+    public void pasoUnNombreConEnieMayuscula() {
+       String args[] = {"maÑana.md", "--mode=no-output"};
+       GestorDeArgumentos miGestor = new GestorDeArgumentos(args);
+       miGestor.getNombreDeArchivo();
+    }
+
+    @Test(expected = NombreDeArchivoIncorrectoException.class)
+    public void pasoUnNombreConEspacioEnBlanco() {
+        String args[] = {"ma ana.md", "--mode=no-output"};
+        GestorDeArgumentos miGestor = new GestorDeArgumentos(args);
+        miGestor.getNombreDeArchivo();
+    }
+
+    @Test(expected = NombreDeArchivoIncorrectoException.class)
+    public void pasoUnNombreConBarraDesplazada() {
+        String args[] = {"ma/ana.md", "--mode=no-output"};
+        GestorDeArgumentos miGestor = new GestorDeArgumentos(args);
+        miGestor.getNombreDeArchivo();
+    }
+
+    @Test(expected = NombreDeArchivoIncorrectoException.class)
+    public void recibeNombreConAcento() {
+        String args[] = {"Camión.md", "--mode=no-output"};
+        GestorDeArgumentos miGestor = new GestorDeArgumentos(args);
+        miGestor.getNombreDeArchivo();
     }
 }

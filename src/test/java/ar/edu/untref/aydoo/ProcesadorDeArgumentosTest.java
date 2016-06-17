@@ -127,14 +127,14 @@ public class ProcesadorDeArgumentosTest {
 		String args[] = { "mipresentacion.md" };
 
 		Opcion nombreDelArchivo = new Opcion();
-		nombreDelArchivo.setNombreDelParametro("sin nombre");
+		nombreDelArchivo.setNombreDelParametro("parametroVacio");
 
 		List<Opcion> listaDeOpciones = new LinkedList<>();
 		listaDeOpciones.add(nombreDelArchivo);
 
 		ProcesadorDeArgumentos interfaz = new ProcesadorDeArgumentos(args, listaDeOpciones);
 
-		String resultado = interfaz.getContenido("sin nombre");
+		String resultado = interfaz.getContenido("parametroVacio");
 
 		Assert.assertEquals("mipresentacion.md", resultado);
 	}
@@ -144,7 +144,7 @@ public class ProcesadorDeArgumentosTest {
 		String args[] = { "mipresentacion.md", "--mode=no-output" };
 
 		Opcion nombreDelArchivo = new Opcion();
-		nombreDelArchivo.setNombreDelParametro("sin nombre");
+		nombreDelArchivo.setNombreDelParametro("parametroVacio");
 		Opcion modo = new Opcion();
 		modo.setNombreDelParametro("--mode");
 		String valores[] = { "default", "no-output" };
@@ -158,130 +158,17 @@ public class ProcesadorDeArgumentosTest {
 		listaDeOpciones.add(nombreDelArchivo);
 
 		ProcesadorDeArgumentos interfaz = new ProcesadorDeArgumentos(args, listaDeOpciones);
-		String resultado = interfaz.getContenido("sin nombre");
+		String resultado = interfaz.getContenido("parametroVacio");
 
 		Assert.assertEquals("mipresentacion.md", resultado);
 	}
 
-	@Test(expected = NombreDeArchivoIncorrectoException.class)
-	public void miArchivoContieneUnaEnie() {
-		String args[] = { "mipresñentacion.md", "--mode=no-output" };
-
-		Opcion nombreDelArchivo = new Opcion();
-		nombreDelArchivo.setNombreDelParametro("sin nombre");
-		Opcion modo = new Opcion();
-		modo.setNombreDelParametro("--mode");
-		String valores[] = { "default", "no-output" };
-		modo.setValoresAdmitidos(valores);
-		modo.setValorDefault("default");
-
-		List<Opcion> listaDeOpciones = new LinkedList<>();
-		listaDeOpciones.add(modo);
-		listaDeOpciones.add(nombreDelArchivo);
-
-		ProcesadorDeArgumentos interfaz = new ProcesadorDeArgumentos(args, listaDeOpciones);
-
-		String nombreDeArchivo = interfaz.getContenido("sin nombre");
-		@SuppressWarnings("unused")
-		ValidadorDeNombreDeArchivo validador = new ValidadorDeNombreDeArchivo(nombreDeArchivo);
-
-	}
-
-	@Test(expected = NombreDeArchivoIncorrectoException.class)
-	public void miArchivoContieneUnaEnieMayuscula() {
-		String args[] = { "maÑana.md", "--mode=no-output" };
-		Opcion nombreDelArchivo = new Opcion();
-		nombreDelArchivo.setNombreDelParametro("sin nombre");
-		Opcion modo = new Opcion();
-		modo.setNombreDelParametro("--mode");
-		String valores[] = { "default", "no-output" };
-		modo.setValoresAdmitidos(valores);
-		modo.setValorDefault("default");
-
-		List<Opcion> listaDeOpciones = new LinkedList<>();
-		listaDeOpciones.add(modo);
-		listaDeOpciones.add(nombreDelArchivo);
-
-		ProcesadorDeArgumentos interfaz = new ProcesadorDeArgumentos(args, listaDeOpciones);
-
-		String nombreDeArchivo = interfaz.getContenido("sin nombre");
-
-		@SuppressWarnings("unused")
-		ValidadorDeNombreDeArchivo validador = new ValidadorDeNombreDeArchivo(nombreDeArchivo);
-	}
-
-	@Test(expected = NombreDeArchivoIncorrectoException.class)
-	public void nombreDeArchivoContieneEspaciosEnBlanco() {
-		String args[] = { "mi presentacion.md", "--mode=no-output" };
-		Opcion nombreDelArchivo = new Opcion();
-		nombreDelArchivo.setNombreDelParametro("sin nombre");
-		Opcion modo = new Opcion();
-		modo.setNombreDelParametro("--mode");
-		String valores[] = { "default", "no-output" };
-		modo.setValoresAdmitidos(valores);
-		modo.setValorDefault("default");
-
-		List<Opcion> listaDeOpciones = new LinkedList<>();
-		listaDeOpciones.add(modo);
-		listaDeOpciones.add(nombreDelArchivo);
-
-		ProcesadorDeArgumentos interfaz = new ProcesadorDeArgumentos(args, listaDeOpciones);
-
-		String nombreDeArchivo = interfaz.getContenido("sin nombre");
-
-		@SuppressWarnings("unused")
-		ValidadorDeNombreDeArchivo validador = new ValidadorDeNombreDeArchivo(nombreDeArchivo);
-	}
-
-	@Test(expected = NombreDeArchivoIncorrectoException.class)
-	public void nombreDeArchivoContieneBarraDesplazada() {
-		String args[] = { "mi/presentacion.md", "--mode=no-output" };
-		Opcion nombreDelArchivo = new Opcion();
-		nombreDelArchivo.setNombreDelParametro("sin nombre");
-		Opcion modo = new Opcion();
-		modo.setNombreDelParametro("--mode");
-		String valores[] = { "default", "no-output" };
-		modo.setValoresAdmitidos(valores);
-		modo.setValorDefault("default");
-
-		List<Opcion> listaDeOpciones = new LinkedList<>();
-		listaDeOpciones.add(modo);
-		listaDeOpciones.add(nombreDelArchivo);
-
-		ProcesadorDeArgumentos interfaz = new ProcesadorDeArgumentos(args, listaDeOpciones);
-
-		String nombreDeArchivo = interfaz.getContenido("sin nombre");
-		@SuppressWarnings("unused")
-		ValidadorDeNombreDeArchivo validador = new ValidadorDeNombreDeArchivo(nombreDeArchivo);
-	}
-
-	@Test(expected = NombreDeArchivoIncorrectoException.class)
-	public void nombreDeArchivoContieneAcento() {
-		String args[] = { "Camión.md", "--mode=no-output" };
-		Opcion nombreDelArchivo = new Opcion();
-		nombreDelArchivo.setNombreDelParametro("sin nombre");
-		Opcion modo = new Opcion();
-		modo.setNombreDelParametro("--mode");
-		String valores[] = { "default", "no-output" };
-		modo.setValoresAdmitidos(valores);
-		modo.setValorDefault("default");
-
-		List<Opcion> listaDeOpciones = new LinkedList<>();
-		listaDeOpciones.add(modo);
-		listaDeOpciones.add(nombreDelArchivo);
-
-		ProcesadorDeArgumentos interfaz = new ProcesadorDeArgumentos(args, listaDeOpciones);
-
-		String nombreDeArchivo = interfaz.getContenido("sin nombre");
-		@SuppressWarnings("unused")
-		ValidadorDeNombreDeArchivo validador = new ValidadorDeNombreDeArchivo(nombreDeArchivo);
-	}
 
 	@Test(expected = ArgumentoInvalidoException.class)
 	public void recibeUnModoInvalido() {
 		String args[] = { "Presentacion.md", "--mode=gaby" };
 		Opcion nombreDelArchivo = new Opcion();
-		nombreDelArchivo.setNombreDelParametro("sin nombre");
+		nombreDelArchivo.setNombreDelParametro("parametroVacio");
 		Opcion modo = new Opcion();
 		modo.setNombreDelParametro("--mode");
 		String valores[] = { "default", "no-output" };

@@ -30,8 +30,8 @@ public class ProcesadorDeArgumentos {
                 String contenidoDelParametro = datos.split("=")[1];
                 this.opciones.get(nombreDelParametro).setContenidoDelParametro(contenidoDelParametro);
             } else {
-                if(this.opciones.containsKey("sin nombre")){
-                    this.opciones.get("sin nombre").setContenidoDelParametro(datos);
+                if(this.opciones.containsKey("parametroVacio")){
+                    this.opciones.get("parametroVacio").setContenidoDelParametro(datos);
                 }
             }
         }
