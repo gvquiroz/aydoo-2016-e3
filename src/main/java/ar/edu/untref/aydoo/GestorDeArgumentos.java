@@ -40,7 +40,7 @@ public class GestorDeArgumentos {
         return nombreDelArchivo;
     }
 
-    public String getContenidoDeModo() {
+    public String getModo() {
         return this.miProcesador.getContenido("--mode");
     }
 

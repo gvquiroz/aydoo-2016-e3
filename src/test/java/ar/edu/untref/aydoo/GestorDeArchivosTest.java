@@ -10,46 +10,11 @@ import org.junit.Test;
 public class GestorDeArchivosTest {
 
 	@Test
-	public void testRenombrarArchivoTxtACvs() throws IOException {
-		GestorDeArchivos gestor = new GestorDeArchivos();
-		File entrada = new File(System.getProperty("user.dir") + "/target/test-classes/template/archivo.txt");
-		File salida = new File(System.getProperty("user.dir") + "/target/test-classes/template/archivo.cvs");
-
-		gestor.renombrarArchivo(entrada, salida);
-
-		Assert.assertEquals(true, salida.exists());
-	}
-
-	@Test
-	public void testRenombrarArchivoCvsATxt() throws IOException {
-		GestorDeArchivos gestor = new GestorDeArchivos();
-		File entrada = new File(System.getProperty("user.dir") + "/target/test-classes/template/archivo.cvs");
-		File salida = new File(System.getProperty("user.dir") + "/target/test-classes/template/archivo.txt");
-
-		gestor.renombrarArchivo(entrada, salida);
-
-		Assert.assertEquals(true, salida.exists());
-	}
-
-	@Test
-	public void testRenombrarCarpetaPlantillaAPlantilla1() throws IOException {
-		GestorDeArchivos gestor = new GestorDeArchivos();
-		File entrada = new File("./target/test-classes/template");
-		File salida = new File("./target/test-classes/template1");
-		gestor.renombrarArchivo(entrada, salida);
-
-		Assert.assertEquals(true, salida.exists());
-		gestor.renombrarArchivo(salida, entrada);
-		Assert.assertEquals(true, entrada.exists());
-	}
-
-	@Test
 	public void testCopiarCarpeta() throws IOException {
 		GestorDeArchivos gestor = new GestorDeArchivos();
 		File origen = new File("./target/test-classes/template");
 		File destino = new File("./target/plantillaCopia");
 		gestor.copiarDirectorio(origen, destino);
-
 	}
 
 	@Test
@@ -57,7 +22,6 @@ public class GestorDeArchivosTest {
 		File archivo = new File(System.getProperty("user.dir") + "/target/test-classes/mipresentacion1.md");
 		GestorDeArchivos gestor = new GestorDeArchivos();
 		gestor.leerArchivo(archivo);
-
 	}
 
 	@Test

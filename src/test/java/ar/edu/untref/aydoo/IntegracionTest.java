@@ -1,25 +1,25 @@
 package ar.edu.untref.aydoo;
 
-import org.junit.After;
-import org.junit.Assert;
-import org.junit.Test;
-
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintStream;
+
+import org.junit.Assert;
+import org.junit.Test;
 
 /**
  * Created by Velonter on 6/7/2016.
  */
 public class IntegracionTest {
 
-    @Test
+    @SuppressWarnings("unused")
+	@Test
     public void testDeIntegracionUsandoComoEjemploImprimirEnPantallaArchivoFormateado() throws IOException {
 
         String args[] = { "mipresentacion.md", "--mode=no-output" };
         GestorDeArgumentos gestorDeEntrada = new GestorDeArgumentos(args);
-        String modoContenido = gestorDeEntrada.getContenidoDeModo();
+        String modoContenido = gestorDeEntrada.getModo();
         String nombreDeArchivo = gestorDeEntrada.getNombreDeArchivo();
         String nombreDeCarpeta = gestorDeEntrada.getNombreDeCarpeta();
 
@@ -35,7 +35,8 @@ public class IntegracionTest {
         AnalizadorDeContenido analizadorDeContenido = new AnalizadorDeContenido(cadenaMarkdown);
         analizadorDeContenido.analizarContenido();
 
-        Conversor conversorHTML = new Conversor(analizadorDeContenido.obtenerContenidoAnalizado());
+        @SuppressWarnings("unchecked")
+		Conversor conversorHTML = new Conversor(analizadorDeContenido.obtenerContenidoAnalizado());
         String cadenaHTML = conversorHTML.getConversion();
 
         //Para agarrar el output del system.out.print

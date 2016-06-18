@@ -15,14 +15,6 @@ import java.io.PrintWriter;
 
 public class GestorDeArchivos {
 
-	public void renombrarArchivo(File antes, File despues) throws java.io.IOException {
-
-		boolean success = antes.renameTo(despues);
-		if (!success) {
-			System.out.println("Error intentando cambiar el nombre de fichero");
-		}
-	}
-
 	public void buscarYReemplazarEnArchivo(String textoBuscado, String nuevoTexto, File archivo)
 			throws FileNotFoundException, IOException {
 		String resultado = this.leerArchivo(archivo);
@@ -45,20 +37,6 @@ public class GestorDeArchivos {
 		return resultado;
 	}
 
-	private void imprimirEnArchivo(File archivo, String resultado) {
-		try {
-			FileWriter w = new FileWriter(archivo);
-			BufferedWriter bw = new BufferedWriter(w);
-			PrintWriter wr = new PrintWriter(bw);
-
-			wr.write(resultado);
-			wr.close();
-			bw.close();
-		} catch (IOException e) {
-		}
-		;
-	}
-
 	public void copiarDirectorio(File origen, File destino) throws IOException {
 		if (origen.isDirectory()) {
 			if (!destino.exists()) {
@@ -72,6 +50,27 @@ public class GestorDeArchivos {
 		} else {
 			copiar(origen, destino);
 		}
+	}
+	
+	public String getUbicacionDelJar(){
+		File jar = new File(System.getProperty("java.class.path"));
+		File direccionJar = jar.getAbsoluteFile().getParentFile();
+		String ubicacionJar = direccionJar.toString();
+		return ubicacionJar;
+	}
+
+	private void imprimirEnArchivo(File archivo, String resultado) {
+		try {
+			FileWriter w = new FileWriter(archivo);
+			BufferedWriter bw = new BufferedWriter(w);
+			PrintWriter wr = new PrintWriter(bw);
+
+			wr.write(resultado);
+			wr.close();
+			bw.close();
+		} catch (IOException e) {
+		}
+		;
 	}
 
 	private void copiar(File origen, File destino) throws IOException {
