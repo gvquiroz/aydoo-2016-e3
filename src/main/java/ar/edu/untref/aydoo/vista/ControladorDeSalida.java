@@ -1,8 +1,10 @@
-package ar.edu.untref.aydoo;
+package ar.edu.untref.aydoo.vista;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+
+import ar.edu.untref.aydoo.entrada.GestorDeArchivos;
 
 public class ControladorDeSalida {
 	private GestorDeArchivos gestor;

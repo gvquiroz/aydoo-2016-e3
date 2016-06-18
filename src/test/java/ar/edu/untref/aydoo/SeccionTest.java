@@ -3,6 +3,11 @@ package ar.edu.untref.aydoo;
 import org.junit.Assert;
 import org.junit.Test;
 
+import ar.edu.untref.aydoo.dominio.Seccion;
+import ar.edu.untref.aydoo.dominio.SubTitulo;
+import ar.edu.untref.aydoo.dominio.Texto;
+import ar.edu.untref.aydoo.dominio.Titulo;
+
 public class SeccionTest {
 
 	@Test

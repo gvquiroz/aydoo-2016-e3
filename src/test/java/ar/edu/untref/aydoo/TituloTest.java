@@ -4,6 +4,8 @@ package ar.edu.untref.aydoo;
 import org.junit.Assert;
 import org.junit.Test;
 
+import ar.edu.untref.aydoo.dominio.Titulo;
+
 public class TituloTest {
 
     @Test

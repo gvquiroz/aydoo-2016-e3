@@ -8,6 +8,11 @@ import java.io.PrintStream;
 import org.junit.Assert;
 import org.junit.Test;
 
+import ar.edu.untref.aydoo.conversion.AnalizadorDeContenido;
+import ar.edu.untref.aydoo.conversion.Conversor;
+import ar.edu.untref.aydoo.entrada.GestorDeArchivos;
+import ar.edu.untref.aydoo.entrada.GestorDeArgumentos;
+
 /**
  * Created by Velonter on 6/7/2016.
  */

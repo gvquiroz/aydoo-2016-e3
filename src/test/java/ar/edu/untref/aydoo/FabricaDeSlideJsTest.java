@@ -6,6 +6,8 @@ import java.io.IOException;
 import org.junit.Assert;
 import org.junit.Test;
 
+import ar.edu.untref.aydoo.conversion.FabricaDeSlideJs;
+
 public class FabricaDeSlideJsTest {
 
 	@Test

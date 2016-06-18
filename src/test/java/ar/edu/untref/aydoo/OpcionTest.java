@@ -3,6 +3,9 @@ package ar.edu.untref.aydoo;
 import org.junit.Assert;
 import org.junit.Test;
 
+import ar.edu.untref.aydoo.entrada.ArgumentoInvalidoException;
+import ar.edu.untref.aydoo.entrada.Opcion;
+
 /**
  * Created by Velonter on 5/25/2016.
  */

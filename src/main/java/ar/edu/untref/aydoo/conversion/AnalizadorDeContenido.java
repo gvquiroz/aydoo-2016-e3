@@ -1,7 +1,15 @@
-package ar.edu.untref.aydoo;
+package ar.edu.untref.aydoo.conversion;
 
 import java.util.LinkedList;
 import java.util.List;
+
+import ar.edu.untref.aydoo.dominio.Elemento;
+import ar.edu.untref.aydoo.dominio.Imagen;
+import ar.edu.untref.aydoo.dominio.Lista;
+import ar.edu.untref.aydoo.dominio.Seccion;
+import ar.edu.untref.aydoo.dominio.SubTitulo;
+import ar.edu.untref.aydoo.dominio.Texto;
+import ar.edu.untref.aydoo.dominio.Titulo;
 
 public class AnalizadorDeContenido {
 

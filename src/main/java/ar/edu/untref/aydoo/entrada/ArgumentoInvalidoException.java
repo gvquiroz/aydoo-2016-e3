@@ -1,4 +1,4 @@
-package ar.edu.untref.aydoo;
+package ar.edu.untref.aydoo.entrada;
 
 /**
  * Created by Velonter on 5/23/2016.

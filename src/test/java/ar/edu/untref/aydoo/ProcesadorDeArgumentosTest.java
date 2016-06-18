@@ -6,6 +6,10 @@ import java.util.List;
 import org.junit.Assert;
 import org.junit.Test;
 
+import ar.edu.untref.aydoo.entrada.ArgumentoInvalidoException;
+import ar.edu.untref.aydoo.entrada.Opcion;
+import ar.edu.untref.aydoo.entrada.ProcesadorDeArgumentos;
+
 /**
  * Created by Velonter on 5/22/2016.
  */

@@ -3,6 +3,9 @@ package ar.edu.untref.aydoo;
 import org.junit.Assert;
 import org.junit.Test;
 
+import ar.edu.untref.aydoo.entrada.GestorDeArgumentos;
+import ar.edu.untref.aydoo.entrada.NombreDeArchivoIncorrectoException;
+
 /**
  * Created by Velonter on 5/27/2016.
  */

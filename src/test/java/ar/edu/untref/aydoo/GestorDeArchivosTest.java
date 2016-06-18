@@ -7,6 +7,8 @@ import java.io.IOException;
 import org.junit.Assert;
 import org.junit.Test;
 
+import ar.edu.untref.aydoo.entrada.GestorDeArchivos;
+
 public class GestorDeArchivosTest {
 
 	@Test

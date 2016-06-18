@@ -1,7 +1,9 @@
-package ar.edu.untref.aydoo;
+package ar.edu.untref.aydoo.conversion;
 
 import java.util.LinkedList;
 import java.util.List;
+
+import ar.edu.untref.aydoo.dominio.Elemento;
 
 
 public class Conversor {

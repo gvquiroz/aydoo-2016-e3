@@ -3,6 +3,15 @@ package ar.edu.untref.aydoo;
 import org.junit.Assert;
 import org.junit.Test;
 
+import ar.edu.untref.aydoo.conversion.Conversor;
+import ar.edu.untref.aydoo.dominio.Elemento;
+import ar.edu.untref.aydoo.dominio.Imagen;
+import ar.edu.untref.aydoo.dominio.Lista;
+import ar.edu.untref.aydoo.dominio.Seccion;
+import ar.edu.untref.aydoo.dominio.SubTitulo;
+import ar.edu.untref.aydoo.dominio.Texto;
+import ar.edu.untref.aydoo.dominio.Titulo;
+
 import java.util.LinkedList;
 import java.util.List;
 

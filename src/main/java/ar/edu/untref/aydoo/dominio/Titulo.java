@@ -1,4 +1,4 @@
-package ar.edu.untref.aydoo;
+package ar.edu.untref.aydoo.dominio;
 
 public class Titulo extends Elemento {
 

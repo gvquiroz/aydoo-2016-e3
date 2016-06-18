@@ -8,6 +8,8 @@ import java.io.PrintStream;
 import org.junit.Assert;
 import org.junit.Test;
 
+import ar.edu.untref.aydoo.vista.ControladorDeSalida;
+
 
 public class ControladorDeSalidaTest {
 

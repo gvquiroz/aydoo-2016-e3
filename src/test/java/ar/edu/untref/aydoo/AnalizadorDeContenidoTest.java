@@ -3,6 +3,9 @@ package ar.edu.untref.aydoo;
 import org.junit.Assert;
 import org.junit.Test;
 
+import ar.edu.untref.aydoo.conversion.AnalizadorDeContenido;
+import ar.edu.untref.aydoo.dominio.Elemento;
+
 import java.util.LinkedList;
 import java.util.List;
 
