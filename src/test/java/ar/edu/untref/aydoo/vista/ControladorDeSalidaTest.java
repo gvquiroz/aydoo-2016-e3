@@ -1,4 +1,4 @@
-package ar.edu.untref.aydoo;
+package ar.edu.untref.aydoo.vista;
 
 import java.io.ByteArrayOutputStream;
 import java.io.FileNotFoundException;
