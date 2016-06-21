@@ -14,6 +14,10 @@ Luego de procesar la entrada con los datos obtenidos se llama al GestorDeArchivo
 
 Para ello se decidió generar una clase Elementos, la cual seria padre de todos los elementos admitidos (Seccion, Titulo, subtitulo, texto, etc.).
 
+El resultado de la lectura del archivo markdown es leido linea por linea por el analizador de markdown que guarda una clase instanceada con el elemento correspondiente en cada seccion
+
+Luego este itera las secciones y les pide que den el resultado de su contenido en HTML
+
 Para reemplazar el contenido del archivo de salida se decidió a través del GestorDeArchivos levantar el contenido en memoria, reemplazar por el string HTML y reemplazar el contenido del archivo de salida dentro de la nueva carpeta creada también por el GestionadorDeArchivo.
 
 En el caso de no requerirse el archivo simplemente se imprime por consola la cadena HTML.
@@ -38,8 +42,7 @@ Cambiada la direccion en la cual va a buscar el template.
 
 * La clase Program tiene demasiada lógica
 
-Creada nueva clase FabricaDeSlideJs encargada de inicializar el analizador (COMPLETAR)
-Y cambiada la responsabilidad de la salida segun el parametro recibido a ControladorDeSalida	
+Cambiada la responsabilidad de la salida segun el parametro recibido a ControladorDeSalida e inicializado por default Files con los directorios correspondientes
 
 * El AnalizadorDeContenido no cierra como está, el switch es imposible
 
@@ -47,7 +50,7 @@ Decidimos ir por la elegante idea de que cada Elemento sepa su caracter de parse
 
 A su vez tenemos un ObservadorDeElementos que interactua con algunos elementos en su instanciamiento con el fin de guardarse (Por ejemplo) una referencia a la ultima seccion creada.
 
-AnalizadorDeContenido se encarga de enviarle a la FabricaDeElementos lineas leidas del archivo Markdown, este interactura con un ObservadorDeElementos para guardar los elementos creados por la FabricaDeElemenos en la ultima seccion creada. 
+AnalizadorDeContenido se encarga de enviarle a la FabricaDeElementos lineas leidas del archivo Markdown, este interactura con un ObservadorDeElementos pidiendole la referencia a la ultima seccion creada.
 
 AnalizadorDeContenido guarda las secciones en un Conjunto para luego interarlas pidiendole a cada una la representacion en HTML de su contenido.
 
