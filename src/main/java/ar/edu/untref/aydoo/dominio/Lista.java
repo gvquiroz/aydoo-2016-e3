@@ -10,7 +10,7 @@ import ar.edu.untref.aydoo.conversion.ObservadorDeElemento;
  */
 public class Lista extends Elemento {
 
-	List<String> listaDeContenido = new LinkedList<>();
+	private List<String> listaDeContenido = new LinkedList<>();
 
 	/*
 	 * Le consulta al Observador si ya hay una lista siendo utilizada como

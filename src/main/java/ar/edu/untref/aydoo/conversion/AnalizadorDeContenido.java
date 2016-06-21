@@ -8,7 +8,7 @@ import ar.edu.untref.aydoo.dominio.Seccion;
 
 public class AnalizadorDeContenido {
 	private List<String> contenidoPorLineas;
-	List<Seccion> conjuntoDeSecciones = new LinkedList<>();
+	private List<Seccion> conjuntoDeSecciones = new LinkedList<>();
 
 	public AnalizadorDeContenido(String contenido) {
 		this.contenidoPorLineas = new LinkedList<String>();
@@ -23,7 +23,7 @@ public class AnalizadorDeContenido {
 			Elemento elemento = fabrica.crearConMD(lineaActual, miObserver);
 			ultimaSeccion = miObserver.getUltimaSeccion();
 			ultimaSeccion.agregarElemento(elemento);
-			if(!conjuntoDeSecciones.contains(ultimaSeccion)){
+			if (!conjuntoDeSecciones.contains(ultimaSeccion)) {
 				this.conjuntoDeSecciones.add(ultimaSeccion);
 			}
 		}
