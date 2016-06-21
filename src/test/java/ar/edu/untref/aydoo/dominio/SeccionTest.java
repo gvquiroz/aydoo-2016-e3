@@ -25,6 +25,7 @@ public class SeccionTest {
         Assert.assertEquals("<section>\n</section>\n", resultado);
     }
 
+
     @Test
     public void muestraSeccionVaciaConAnalizador() {
 
