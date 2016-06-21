@@ -38,4 +38,14 @@ public class ListaTest {
 	    "<ul>\n<li>hola</li>\n</ul>\n<h1>Titulo1</h1>\n<ul>\n<li>hola</li>\n</ul>\n" +
 	    "</section>\n", resultado);
 	 }
+	@Test
+	public void analizadoConListaConDosItemsYUnTituloEntreMedioYListaConDosElementos() {
+		String entradaMD = "--- \n*hola\n# Titulo1\n*hola\n*holados\n";
+		AnalizadorDeContenido analizador = new AnalizadorDeContenido(entradaMD);
+		String resultado = analizador.analizarContenido();
+
+		Assert.assertEquals("<section>\n" +
+				"<ul>\n<li>hola</li>\n</ul>\n<h1>Titulo1</h1>\n<ul>\n<li>hola</li>\n<li>holados</li>\n</ul>\n" +
+				"</section>\n", resultado);
+	}
 }
