@@ -33,7 +33,6 @@ public class TextoTest {
 	@Test
 	public void muestraTituloEntrante() {
 
-		Texto texto = new Texto();
 		Conversor conversor = new Conversor();
 		ObservadorDeElemento miObserver = new ObservadorDeElemento();
 		String entradaMD = "Buenos Dias\n";
