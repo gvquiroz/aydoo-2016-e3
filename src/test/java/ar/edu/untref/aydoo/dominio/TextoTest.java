@@ -25,7 +25,7 @@ public class TextoTest {
 		Texto texto = new Texto();
 		ObservadorDeElemento miObserver = new ObservadorDeElemento();
 		
-		texto.setContenido("Buenos Dias\n");
+		texto.setContenido("Buenos Dias");
 
 		Assert.assertEquals("Buenos Dias\n", texto.salidaHtml());
 	}
@@ -35,7 +35,7 @@ public class TextoTest {
 
 		Conversor conversor = new Conversor();
 		ObservadorDeElemento miObserver = new ObservadorDeElemento();
-		String entradaMD = "Buenos Dias\n";
+		String entradaMD = "Buenos Dias";
 		String salidaHtml = conversor.convertirAHtml(entradaMD,miObserver);
 
 		Assert.assertEquals("Buenos Dias\n", salidaHtml);

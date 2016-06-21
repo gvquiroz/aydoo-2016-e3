@@ -6,7 +6,7 @@ public class Texto extends Elemento {
 
 	@Override
 	public String salidaHtml() {
-		return getContenido();
+		return getContenido()+ "\n";
 	}
 
 	@Override
