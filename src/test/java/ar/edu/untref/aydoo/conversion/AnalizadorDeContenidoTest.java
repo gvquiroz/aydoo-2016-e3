@@ -34,33 +34,33 @@ public class AnalizadorDeContenidoTest {
 	}
 	
 	@Test
-	public void recibeCasoBase() {
+	public void casoBase() {
 		String contenido = "---\n# slide1 :titulo 1\n---\n## slide2: titulo 2\n---\nslide 3\n# titulo 1\n## titulo 2\n\n";
 		AnalizadorDeContenido analizador = new AnalizadorDeContenido(contenido);
 		String cadenaHtml = analizador.analizarContenido();
-		String resultado = "<section>\n" +
-				"<h1>slide1 :titulo 1</h1>\n" +
-				"</section>\n" +
-				"<section>\n" +
-				"<h2>slide2: titulo 2</h2>\n" +
-				"</section>\n" +
-				"<section>\n" +
-				"slide 3<h1>titulo 1</h1>\n" +
-				"<h2>titulo 2</h2>\n" +
-				"</section>\n";
-		Assert.assertEquals(resultado, cadenaHtml);
+	
+		Assert.assertEquals("<section>\n<h1>slide1 :titulo 1</h1>\n</section>\n<section>\n<h2>slide2: titulo 2</h2>\n</section>\n<section>\nslide 3<h1>titulo 1</h1>\n<h2>titulo 2</h2>\n</section>\n", cadenaHtml);
 	}
+	
+	public void recibeTexto() {
 
-	@Test
-	public void recibeTituloYSubTitulo() {
-
-		String contenido = "---\n# unTitulo\n## unSubTitulo\n";
+		String contenido = "---\n Solo Texto\n";
 		AnalizadorDeContenido analizador = new AnalizadorDeContenido(contenido);
 		String cadenaHtml = analizador.analizarContenido();
 
-		Assert.assertEquals("<section>\n<h1>unTitulo</h1>\n" +
-				"<h2>unSubTitulo</h2>\n</section>\n", cadenaHtml);
+		Assert.assertEquals("<section>\nSolo Texto\n</section>\n", cadenaHtml);
 	}
+	
+	public void conversionTituloYTextoSimple() {
 
+		String contenido = "---\n# unTitulo\n Solo Texto\n";
+		AnalizadorDeContenido analizador = new AnalizadorDeContenido(contenido);
+		String cadenaHtml = analizador.analizarContenido();
+
+		Assert.assertEquals("<section>\n<h1>unTitulo</h1>\nSolo Texto\n</section>\n", cadenaHtml);
+	}
+	
+
+	
 
 }

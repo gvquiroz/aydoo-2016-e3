@@ -11,10 +11,10 @@ public class Texto extends Elemento {
 
 	@Override
 	public Elemento crearConMD(String entradaMD, ObservadorDeElemento miObserver) {
-			miObserver.setUltimaLista(null);
-			Texto texto = new Texto();
-			texto.setContenido(entradaMD);
-			return texto;
+		miObserver.setUltimaLista(null);
+		Texto texto = new Texto();
+		texto.setContenido(entradaMD);
+		return texto;
 	}
 
 }
