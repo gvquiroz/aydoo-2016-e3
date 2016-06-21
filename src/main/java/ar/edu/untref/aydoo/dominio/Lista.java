@@ -1,36 +1,52 @@
 package ar.edu.untref.aydoo.dominio;
 
-public class Lista extends Elemento{
+import java.util.LinkedList;
+import java.util.List;
 
-    public Lista(String contenido) {
-        super(contenido);
-    }
+import ar.edu.untref.aydoo.conversion.ObservadorDeElemento;
 
-    public String getSalida() {
+/**
+ * Created by Velonter on 6/20/2016.
+ */
+public class Lista extends Elemento {
 
-        /*<ul>
-        <li>un item de una lista</li>
-        <li>otro item de una lista</li>
-        </ul>
-        */
-        String entrada = this.getEntrada();
-        String [] listaDeItems = entrada.split("\\*");
-        String lista = "";
-        String itemLimpio;
+	List<String> listaDeContenido = new LinkedList<>();
 
-        for(int i = 1; i < listaDeItems.length; i++){
+	/*
+	 * Le consulta al Observador si ya hay una lista siendo utilizada como
+	 * elemento anterior, si es asi solo agrega contenido, si no crea una clase
+	 * Item con su contenido correspondiente
+	 */
 
-            itemLimpio = listaDeItems[i].substring(0, listaDeItems[i].length()-1);
-            lista = lista.concat("<li>" + itemLimpio + "</li>" + "\n");
-        }
+	@Override
+	public Elemento crearConMD(String entradaMD, ObservadorDeElemento miObserver) {
+		if (entradaMD.startsWith("*")) {
+			if (miObserver.getUltimaLista() == null) {
+				miObserver.setUltimaLista(new Lista());
+				String contenido = entradaMD.replace("*", "");
+				miObserver.getUltimaLista().agregarContenidoDeItem(contenido);
+			} else {
+				String contenido = entradaMD.replace("*", "");
+				miObserver.getUltimaLista().agregarContenidoDeItem(contenido);
+			}
+			return miObserver.getUltimaLista();
+		}
+		return null;
+	}
 
-        String salida;
-        salida = "<ul>" + "\n" + lista + "</ul>";
-        return salida;
-    }
+	@Override
+	public String salidaHtml() {
+		String resultado = "";
+		resultado += "<ul>\n";
+		for (String contenidoDeItem : this.listaDeContenido) {
+			resultado += "<li>" + contenidoDeItem + "</li>\n";
+		}
+		resultado += "</ul>\n";
+		this.setContenido(resultado);
+		return getContenido();
+	}
 
-    public void agregarItem(String unItem) {
-
-        super.setEntrada(this.getEntrada().concat(unItem));
-    }
+	public void agregarContenidoDeItem(String nuevoContenido) {
+		this.listaDeContenido.add(nuevoContenido);
+	}
 }

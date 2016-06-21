@@ -1,15 +1,20 @@
 package ar.edu.untref.aydoo.dominio;
 
+import ar.edu.untref.aydoo.conversion.ObservadorDeElemento;
+
 public class Texto extends Elemento {
 
-	public Texto(String texto) {
-		super(texto);
+	@Override
+	public String salidaHtml() {
+		return getContenido();
 	}
 
-	public String getSalida(){
-		String textoLimpio = getEntrada().substring(0, getEntrada().length()-1);
-
-		return textoLimpio;
+	@Override
+	public Elemento crearConMD(String entradaMD, ObservadorDeElemento miObserver) {
+			miObserver.setUltimaLista(null);
+			Texto texto = new Texto();
+			texto.setContenido(entradaMD);
+			return texto;
 	}
-	
+
 }

@@ -3,197 +3,46 @@ package ar.edu.untref.aydoo.conversion;
 import org.junit.Assert;
 import org.junit.Test;
 
-import ar.edu.untref.aydoo.conversion.AnalizadorDeContenido;
-import ar.edu.untref.aydoo.dominio.Elemento;
-
-import java.util.LinkedList;
-import java.util.List;
-
-
 public class AnalizadorDeContenidoTest {
 
-    private List<Elemento> elementosContenido = new LinkedList<Elemento>();
-
-    @SuppressWarnings("unchecked")
 	@Test
-    public void recibeTitulo(){
+	public void recibeTitulo() {
 
-        String contenido = "---\n# unTitulo\n";
-        AnalizadorDeContenido analizador = new AnalizadorDeContenido(contenido);
-        analizador.analizarContenido();
-        elementosContenido = analizador.obtenerContenidoAnalizado();
+		String contenido = "---\n# unTitulo\n";
+		AnalizadorDeContenido analizador = new AnalizadorDeContenido(contenido);
+		String cadenaHtml = analizador.analizarContenido();
 
-        String entrada = "# unTitulo\n";
+		Assert.assertEquals("<section>\n<h1>unTitulo</h1>\n</section>\n", cadenaHtml);
+	}
 
-        Assert.assertEquals(entrada, elementosContenido.get(0).getEntrada());
-
-    }
-
-    @SuppressWarnings("unchecked")
 	@Test
-    public void recibeSubtitulo(){
+	public void recibeSubtitulo() {
 
-        String contenido = "---\n## unSubTitulo\n";
-        AnalizadorDeContenido analizador = new AnalizadorDeContenido(contenido);
-        analizador.analizarContenido();
-        elementosContenido = analizador.obtenerContenidoAnalizado();
+		String contenido = "--- \n## unSubTitulo\n";
+		AnalizadorDeContenido analizador = new AnalizadorDeContenido(contenido);
+		String cadenaHtml = analizador.analizarContenido();
 
-        String entrada = "## unSubTitulo\n";
+		Assert.assertEquals("<section>\n<h2>unSubTitulo</h2>\n</section>\n", cadenaHtml);
+	}
 
-        Assert.assertEquals(entrada, elementosContenido.get(0).getEntrada());
-
-    }
-
-    @SuppressWarnings("unchecked")
 	@Test
-    public void recibeImagen(){
-
-        String contenido = "---\ni:imagen.png\n";
-        AnalizadorDeContenido analizador = new AnalizadorDeContenido(contenido);
-        analizador.analizarContenido();
-        elementosContenido = analizador.obtenerContenidoAnalizado();
-
-        String entrada = "i:imagen.png\n";
-
-        Assert.assertEquals(entrada, elementosContenido.get(0).getEntrada());
-
-    }
-
-    @SuppressWarnings("unchecked")
+	public void recibeImagen() {
+		String contenido = "--- \ni:imagen.png\n";
+		AnalizadorDeContenido analizador = new AnalizadorDeContenido(contenido);
+		String cadenaHtml = analizador.analizarContenido();
+		Assert.assertEquals("<section>\n<img src= imagen.png />\n</section>\n", cadenaHtml);
+	}
+	
 	@Test
-    public void recibeTexto(){
+	public void casoBase() {
+		String contenido = "---\n# slide1 :titulo 1\n---\n## slide2: titulo 2\n---\nslide 3\n# titulo 1\n## titulo 2\n\n";
+		AnalizadorDeContenido analizador = new AnalizadorDeContenido(contenido);
+		String cadenaHtml = analizador.analizarContenido();
+	
+		//Assert.assertEquals("<section>\n<img src= imagen.png />\n</section>\n", cadenaHtml);
+	}
+	
 
-        String contenido = "---\nEsto es un texto\n";
-        AnalizadorDeContenido analizador = new AnalizadorDeContenido(contenido);
-        analizador.analizarContenido();
-        elementosContenido = analizador.obtenerContenidoAnalizado();
 
-        String entrada = "Esto es un texto\n";
-
-        Assert.assertEquals(entrada, elementosContenido.get(0).getEntrada());
-
-    }
-
-    @SuppressWarnings("unchecked")
-	@Test
-    public void recibeLista(){
-
-        String contenido = "---\n*unItem\n";
-        AnalizadorDeContenido analizador = new AnalizadorDeContenido(contenido);
-        analizador.analizarContenido();
-        elementosContenido = analizador.obtenerContenidoAnalizado();
-
-        String entrada = "*unItem\n";
-
-        Assert.assertEquals(entrada, elementosContenido.get(0).getEntrada());
-
-    }
-
-    @SuppressWarnings("unchecked")
-	@Test
-    public void recibeListaConVariosItems(){
-
-        String contenido = "---\n*unItem\n*otroItem\n*tercerItem\n";
-        AnalizadorDeContenido analizador = new AnalizadorDeContenido(contenido);
-        analizador.analizarContenido();
-        elementosContenido = analizador.obtenerContenidoAnalizado();
-
-        String entrada = "*unItem\n*otroItem\n*tercerItem\n";
-
-        Assert.assertEquals(entrada, elementosContenido.get(0).getEntrada());
-
-    }
-
-    @SuppressWarnings("unchecked")
-	@Test
-    public void recibeDosSeccionesUnaConTituloYOtraConTituloYSubtituloVerificaPrimeraSeccion(){
-
-        String contenido = "---\n# unTitulo\n---\n# unTitulo\n## unSubTitulo\n";
-
-        AnalizadorDeContenido analizador = new AnalizadorDeContenido(contenido);
-        analizador.analizarContenido();
-        elementosContenido = analizador.obtenerContenidoAnalizado();
-
-        String entradaPrimeraSeccion = "# unTitulo\n";
-
-        Assert.assertEquals(entradaPrimeraSeccion, elementosContenido.get(0).getEntrada());
-
-    }
-
-    @SuppressWarnings("unchecked")
-	@Test
-    public void recibeDosSeccionesUnaConTituloYOtraConTituloYSubtituloVerificaSegundaSeccion(){
-
-        String contenido = "---\n# unTitulo\n---\n# unTitulo\n## unSubTitulo\n";
-
-        AnalizadorDeContenido analizador = new AnalizadorDeContenido(contenido);
-        analizador.analizarContenido();
-        elementosContenido = analizador.obtenerContenidoAnalizado();
-
-        String entradaSegundaSeccion = "# unTitulo\n## unSubTitulo\n";
-
-        Assert.assertEquals(entradaSegundaSeccion, elementosContenido.get(1).getEntrada());
-
-    }
-
-    @SuppressWarnings("unchecked")
-	@Test
-    public void recibeTresSeccionesConVariosElementos(){
-
-        String contenido = "---\n# unTitulo\n---\n# unTitulo\n## unSubTitulo\n---\ni:imagen.png\n# unTitulo\n";
-        AnalizadorDeContenido analizador = new AnalizadorDeContenido(contenido);
-        analizador.analizarContenido();
-        elementosContenido = analizador.obtenerContenidoAnalizado();
-
-        String entradaTerceraSeccion = "i:imagen.png\n# unTitulo\n";
-
-        Assert.assertEquals(entradaTerceraSeccion, elementosContenido.get(2).getEntrada());
-
-    }
-
-    @SuppressWarnings("unchecked")
-	@Test
-    public void recibeDosSeccionesYVerificaTexto(){
-
-        String contenido = "---\n#UnTitulo\n---\nEsto es un texto\n";
-        AnalizadorDeContenido analizador = new AnalizadorDeContenido(contenido);
-        analizador.analizarContenido();
-        elementosContenido = analizador.obtenerContenidoAnalizado();
-
-        String entradaSegundaSeccion = "Esto es un texto\n";
-
-        Assert.assertEquals(entradaSegundaSeccion, elementosContenido.get(1).getEntrada());
-
-    }
-
-    @SuppressWarnings("unchecked")
-	@Test
-    public void recibeDosSeccionesYVerificaTextoLargo(){
-
-        String contenido = "---\n#UnTitulo\n---\nEsto es un texto\nEnVarias\nLineas\n";
-        AnalizadorDeContenido analizador = new AnalizadorDeContenido(contenido);
-        analizador.analizarContenido();
-        elementosContenido = analizador.obtenerContenidoAnalizado();
-
-        String entradaSegundaSeccion = "Esto es un texto\nEnVarias\nLineas\n";
-
-        Assert.assertEquals(entradaSegundaSeccion, elementosContenido.get(1).getEntrada());
-
-    }
-
-    @SuppressWarnings("unchecked")
-	@Test
-    public void recibeTresSeccionesYVerificaTextoLargoEnSegundaSeccion(){
-
-        String contenido = "---\n#UnTitulo\n---\nEsto es un texto\nEnVarias\nLineas\n---\ni:imagen.png\n";
-        AnalizadorDeContenido analizador = new AnalizadorDeContenido(contenido);
-        analizador.analizarContenido();
-        elementosContenido = analizador.obtenerContenidoAnalizado();
-
-        String entradaSegundaSeccion = "Esto es un texto\nEnVarias\nLineas\n";
-
-        Assert.assertEquals(entradaSegundaSeccion, elementosContenido.get(1).getEntrada());
-
-    }
 
 }

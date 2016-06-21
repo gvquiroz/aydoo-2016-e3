@@ -1,23 +1,24 @@
 package ar.edu.untref.aydoo.dominio;
 
+import ar.edu.untref.aydoo.conversion.ObservadorDeElemento;
+
 public class SubTitulo extends Elemento{
+	
+	@Override
+	public Elemento crearConMD(String entradaMD, ObservadorDeElemento miObserver){
+		if(entradaMD.startsWith("## ")){
+			miObserver.setUltimaLista(null);
+			SubTitulo subTitulo = new SubTitulo();
+			String contenido = entradaMD.replace("## ", "");
+			subTitulo.setContenido(contenido);
+			return subTitulo;
+		}
+		return null;
+	}
 
-    public SubTitulo(String subTitulo) {
+	@Override
+	public String salidaHtml() {
+		return "<h2>" + getContenido() + "</h2>\n";
+	}
 
-        super(subTitulo);
-
-    }
-
-    public String getSalida(){
-
-        //<h2>un subtitulo</h2>
-
-        String entrada = this.getEntrada();
-        String subTituloLimpio = entrada.substring(3,entrada.length()-1);
-        String salida;
-        salida = "<h2>"+subTituloLimpio+"</h2>";
-
-        return salida;
-
-    }
 }

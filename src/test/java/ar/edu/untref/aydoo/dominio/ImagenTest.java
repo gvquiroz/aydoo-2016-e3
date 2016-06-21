@@ -3,26 +3,39 @@ package ar.edu.untref.aydoo.dominio;
 import org.junit.Assert;
 import org.junit.Test;
 
+import ar.edu.untref.aydoo.conversion.Conversor;
+import ar.edu.untref.aydoo.conversion.ObservadorDeElemento;
 import ar.edu.untref.aydoo.dominio.Imagen;
 
 public class ImagenTest {
 
-    @Test
-    public void muestraImagenEntrante(){
+	@Test
+	public void muestraContenidoDeImagen() {
 
-        Imagen unaImagen = new Imagen("i:fotoImputado.png\n");
-        String imagenEntrada = unaImagen.getEntrada();
+		Imagen unaImagen = new Imagen();
 
-        Assert.assertEquals("i:fotoImputado.png\n", imagenEntrada);
-    }
+		unaImagen.setContenido("fotoImputado.png");
 
-    @Test
-    public void muestraImagenTransformadaSalida(){
+		Assert.assertEquals("fotoImputado.png", unaImagen.getContenido());
+	}
 
-        Imagen unaImagen = new Imagen("i:fotoImputado.png\n");
-        String imagenSalida = unaImagen.getSalida();
+	@Test
+	public void muestraImagenEntrante() {
 
-        Assert.assertEquals("<img src= fotoImputado.png />", imagenSalida);
-    }
+		Imagen unaImagen = new Imagen();
 
+		unaImagen.setContenido("fotoImputado.png");
+
+		Assert.assertEquals("<img src= fotoImputado.png />\n", unaImagen.salidaHtml());
+	}
+
+	@Test
+	public void convertirImagen() {
+		Conversor conversor = new Conversor();
+		ObservadorDeElemento miObserver = new ObservadorDeElemento();
+		String entradaMD = "i:fotoImputado.png";
+		String salidaHtml = conversor.convertirAHtml(entradaMD, miObserver);
+
+		Assert.assertEquals("<img src= fotoImputado.png />\n", salidaHtml);
+	}
 }

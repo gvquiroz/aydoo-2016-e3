@@ -1,29 +1,41 @@
 package ar.edu.untref.aydoo.dominio;
 
-
 import org.junit.Assert;
 import org.junit.Test;
 
-import ar.edu.untref.aydoo.dominio.Titulo;
+import ar.edu.untref.aydoo.conversion.AnalizadorDeContenido;
+import ar.edu.untref.aydoo.conversion.Conversor;
+import ar.edu.untref.aydoo.conversion.ObservadorDeElemento;
 
 public class TituloTest {
 
-    @Test
-    public void muestraTituloEntrante(){
+	@Test
+	public void convertirTitulo() {
 
-        Titulo unTitulo = new Titulo("# Buenos Dias\n");
-        String tituloEntrada = unTitulo.getEntrada();
+		String entradaMD = "--- \n# Titulo1";
+		AnalizadorDeContenido analizador = new AnalizadorDeContenido(entradaMD);
 
-        Assert.assertEquals("# Buenos Dias\n", tituloEntrada);
-    }
+		String resultado = analizador.analizarContenido();
 
-    @Test
-    public void muestralTituloTransformadoSalida(){
+		Assert.assertEquals("<section>\n<h1>Titulo1</h1>\n</section>\n", resultado);
 
-        Titulo unTitulo = new Titulo("# Buenos Dias\n");
-        String tituloSalida = unTitulo.getSalida();
+	}
 
-        Assert.assertEquals("<h1>Buenos Dias</h1>", tituloSalida);
-    }
+	@Test
+	public void convertirAlgoDistintoAUnTitulo() {
+		Conversor conversor = new Conversor();
+		ObservadorDeElemento miObserver = new ObservadorDeElemento();
+		String entradaMD = "## NoEsUnTitulo";
+		String salidaHtml = conversor.convertirAHtml(entradaMD, miObserver);
+
+		Assert.assertNotEquals("<h1>NoEsUnTitulo</h1>", salidaHtml);
+	}
+
+	@Test
+	public void probarContenidoDelTitulo() {
+		Titulo titulo = new Titulo();
+		titulo.setContenido("titulo");
+		Assert.assertEquals("titulo", titulo.getContenido());
+	}
 
 }

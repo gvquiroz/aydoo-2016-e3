@@ -3,25 +3,43 @@ package ar.edu.untref.aydoo.dominio;
 import org.junit.Assert;
 import org.junit.Test;
 
+import ar.edu.untref.aydoo.conversion.Conversor;
+import ar.edu.untref.aydoo.conversion.ObservadorDeElemento;
 import ar.edu.untref.aydoo.dominio.Texto;
 
 public class TextoTest {
 
 	@Test
+	public void muestraContenidoDelTexto() {
+
+		Texto texto = new Texto();
+
+		texto.setContenido("Buenos Dias\n");
+
+		Assert.assertEquals("Buenos Dias\n", texto.getContenido());
+	}
+	
+	@Test
+	public void textoTranformacionHtml() {
+
+		Texto texto = new Texto();
+		ObservadorDeElemento miObserver = new ObservadorDeElemento();
+		
+		texto.setContenido("Buenos Dias\n");
+
+		Assert.assertEquals("Buenos Dias\n", texto.salidaHtml());
+	}
+	
+	@Test
 	public void muestraTituloEntrante() {
 
-		Texto texto = new Texto("Buenos Dias\n");
-		String textoEntrada = texto.getEntrada();
+		Texto texto = new Texto();
+		Conversor conversor = new Conversor();
+		ObservadorDeElemento miObserver = new ObservadorDeElemento();
+		String entradaMD = "Buenos Dias\n";
+		String salidaHtml = conversor.convertirAHtml(entradaMD,miObserver);
 
-		Assert.assertEquals("Buenos Dias\n", textoEntrada);
+		Assert.assertEquals("Buenos Dias\n", salidaHtml);
 	}
 
-	@Test
-	public void muestralTextoTransformadoSalida() {
-
-		Texto unTitulo = new Texto("Buenos Dias\n");
-		String textoSalida = unTitulo.getSalida();
-
-		Assert.assertEquals("Buenos Dias", textoSalida);
-	}
 }

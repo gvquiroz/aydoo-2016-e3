@@ -38,11 +38,9 @@ public class IntegracionTest {
         String cadenaMarkdown = gestor.leerArchivo(archivo);
 
         AnalizadorDeContenido analizadorDeContenido = new AnalizadorDeContenido(cadenaMarkdown);
-        analizadorDeContenido.analizarContenido();
+        String cadenaHTML = analizadorDeContenido.analizarContenido();
 
-        @SuppressWarnings("unchecked")
-		Conversor conversorHTML = new Conversor(analizadorDeContenido.obtenerContenidoAnalizado());
-        String cadenaHTML = conversorHTML.getConversion();
+     
 
         //Para agarrar el output del system.out.print
         ByteArrayOutputStream outContent = new ByteArrayOutputStream();

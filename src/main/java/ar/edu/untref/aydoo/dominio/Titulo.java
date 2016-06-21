@@ -1,24 +1,25 @@
 package ar.edu.untref.aydoo.dominio;
 
+import ar.edu.untref.aydoo.conversion.ObservadorDeElemento;
+
 public class Titulo extends Elemento {
 
-    public Titulo(String titulo) {
 
-        super(titulo);
+	@Override
+	public Elemento crearConMD(String entradaMD, ObservadorDeElemento miObserver){
+		if(entradaMD.startsWith("# ")){
+			miObserver.setUltimaLista(null);
+			Titulo titulo = new Titulo();
+			String contenido = entradaMD.replace("# ", "");
+			titulo.setContenido(contenido);
+			return titulo;
+		}
+		return null;
+	}
 
-    }
-
-    public String getSalida(){
-
-        //<h1>un titulo</h1>
-
-        String entrada = this.getEntrada();
-        String tituloLimpio = entrada.substring(2, entrada.length()-1);
-        String salida;
-        salida = "<h1>"+tituloLimpio+"</h1>";
-
-        return salida;
-
-    }
+	@Override
+	public String salidaHtml() {
+		return "<h1>" + getContenido() + "</h1>\n";
+	}
 
 }

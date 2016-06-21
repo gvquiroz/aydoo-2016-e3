@@ -1,24 +1,21 @@
 package ar.edu.untref.aydoo.dominio;
 
+import ar.edu.untref.aydoo.conversion.ObservadorDeElemento;
 
 public class Imagen extends Elemento {
-
-    public Imagen(String imagen) {
-
-        super(imagen);
-
-    }
-
-    public String getSalida(){
-
-        //<img src=”imagen.png />
-
-        String entrada = this.getEntrada();
-        String imagenLimpia = entrada.substring(2, entrada.length()-1);
-        String salida;
-        salida = "<img src= "+imagenLimpia+" />";
-
-        return salida;
-
-    }
+	@Override
+	public String salidaHtml() {
+		return "<img src= " + getContenido() + " />\n";
+	}
+	@Override
+	public Elemento crearConMD(String entradaMD, ObservadorDeElemento miObserver) {
+		if(entradaMD.startsWith("i:")){
+			miObserver.setUltimaLista(null);
+			Imagen imagen = new Imagen();
+			String contenido = entradaMD.replace("i:", "");
+			imagen.setContenido(contenido);
+			return imagen;
+		}
+		return null;
+	}
 }

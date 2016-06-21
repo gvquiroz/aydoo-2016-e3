@@ -28,10 +28,7 @@ public class GestorDeArchivos {
 		FileReader file = new FileReader(archivo);
 		BufferedReader b = new BufferedReader(file);
 		while ((cadena = b.readLine()) != null) {
-			if (resultado.equals("")) {
-				resultado = cadena;
-			}
-			resultado = resultado + "\n" + cadena;
+			resultado += cadena + "\n";
 		}
 		b.close();
 		return resultado;
@@ -51,8 +48,8 @@ public class GestorDeArchivos {
 			copiar(origen, destino);
 		}
 	}
-	
-	public String getUbicacionDelJar(){
+
+	public String getUbicacionDelJar() {
 		File jar = new File(System.getProperty("java.class.path"));
 		File direccionJar = jar.getAbsoluteFile().getParentFile();
 		String ubicacionJar = direccionJar.toString();

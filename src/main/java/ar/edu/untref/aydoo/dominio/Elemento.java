@@ -1,25 +1,21 @@
 package ar.edu.untref.aydoo.dominio;
 
+import ar.edu.untref.aydoo.conversion.ObservadorDeElemento;
 
 public abstract class Elemento {
+	
+	private String contenido;
+	
+	public abstract String salidaHtml();
 
-    private String entrada;
-    private String salida;
+	public String getContenido() {
+		return contenido;
+	}
 
-    public Elemento (String contenido){
-        setEntrada(contenido);
-    }
+	public void setContenido(String contenido) {
+		this.contenido = contenido;
+	}
 
-    public void setEntrada(String entrada){
-        this.entrada = entrada;
-    }
-
-    public String getEntrada(){
-        return this.entrada;
-    }
-
-    public String getSalida(){
-        return this.salida;
-    }
+	public abstract Elemento crearConMD(String entradaMD, ObservadorDeElemento miObserver);
 
 }
